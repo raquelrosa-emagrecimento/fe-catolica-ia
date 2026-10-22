@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B1328">
+<meta name="robots" content="noindex,nofollow">
+<title>Fé Católica IA · Sua Fé em Todos os Momentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101A35;--gold:#D4AF37;--gold2:#E9CC6B;--white:#FFFFFF;--beige:#F7F2E8;--wine:#722F37;
+  --serif:'EB Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--r:14px;--pad:clamp(16px,4vw,48px)}
+[data-theme=dark]{--bg:#0B1328;--bg2:#101A35;--card:#15214A;--card2:#1B2856;--line:#24335F;--ink:#FFFFFF;--mut:#B7C0D8;--dim:#7D88A8;--shadow:0 12px 30px rgba(0,0,0,.35)}
+[data-theme=light]{--bg:#F7F2E8;--bg2:#EFE7D6;--card:#FFFFFF;--card2:#FBF7EE;--line:#E3D8C2;--ink:#101A35;--mut:#4C5675;--dim:#8A8FA3;--shadow:0 10px 24px rgba(16,26,53,.08)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
+body{padding-bottom:calc(74px + env(safe-area-inset-bottom));transition:background .3s}
+@media(min-width:900px){body{padding-bottom:40px}}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.hide{display:none!important}
+h1,h2,h3{margin:0}
+.serif{font-family:var(--serif)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
+.narrow{max-width:760px;margin:0 auto;padding:0 var(--pad)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:800;font-size:15.5px;transition:transform .12s,background .2s,border-color .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.b-gold{background:var(--gold);color:#1A1405}.b-gold:hover{background:var(--gold2)}
+.b-line{border:1.5px solid var(--gold);color:var(--ink)}.b-line:hover{background:rgba(212,175,55,.12)}
+.b-ghost{background:var(--card2);color:var(--ink);border:1px solid var(--line)}
+.b-wine{background:var(--wine);color:#fff}
+.b-block{width:100%}
+.b-sm{min-height:38px;padding:0 16px;font-size:14px}
+.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.t-gold{background:rgba(212,175,55,.16);color:var(--gold)}
+[data-theme=light] .t-gold{color:#8A6B12}
+.t-wine{background:var(--wine);color:#fff}
+.kick{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+[data-theme=light] .kick{color:#9A7A17}
+.mut{color:var(--mut)}
+
+/* ---------- AUTH ---------- */
+#auth{position:fixed;inset:0;z-index:200;display:grid;grid-template-columns:1.1fr 1fr;background:var(--bg)}
+#auth .art{background:linear-gradient(90deg,rgba(11,19,40,0) 50%,var(--bg)),url(assets/img/maria.jpg) center 20%/cover}
+#auth .panel{display:flex;align-items:center;justify-content:center;padding:32px 20px;overflow-y:auto}
+.auth-box{width:min(420px,100%)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:.01em;white-space:nowrap}
+.logo svg{color:var(--gold)}
+.logo b{color:var(--gold);font-weight:700}
+.auth-box h1{font-family:var(--serif);font-size:34px;line-height:1.1;margin:22px 0 6px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;margin:20px 0}
+.seg button{min-height:40px;border-radius:999px;font-weight:800;font-size:14.5px;color:var(--mut)}
+.seg button.on{background:var(--gold);color:#1A1405}
+.in{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:16px;margin-bottom:10px;color:var(--ink)}
+.in:focus{outline:none;border-color:var(--gold)}
+textarea.in{min-height:100px;resize:vertical}
+.or{display:flex;align-items:center;gap:10px;color:var(--dim);font-size:13px;margin:14px 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.g-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;border-radius:999px;background:#fff;color:#1f1f1f;font-weight:700;border:1px solid #ddd}
+.link{color:var(--gold);font-weight:700;font-size:14px}
+[data-theme=light] .link{color:#8A6B12}
+.fine{font-size:12.5px;color:var(--dim);margin-top:14px}
+@media(max-width:899px){#auth{grid-template-columns:1fr;grid-template-rows:38vh 1fr}#auth .art{background:linear-gradient(0deg,var(--bg),rgba(11,19,40,0) 60%),url(assets/img/maria.jpg) center 22%/cover}#auth .panel{align-items:flex-start;padding-top:0}}
+
+/* onboarding */
+#onb{position:fixed;inset:0;z-index:190;background:var(--bg);overflow-y:auto;padding:40px var(--pad) 60px}
+.dev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:24px 0}
+.dev{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;text-align:left;border:2px solid transparent;transition:border-color .2s,transform .2s}
+.dev:hover{transform:translateY(-2px)}
+.dev.on{border-color:var(--gold)}
+.dev .ph{position:absolute;inset:0;background-size:cover;background-position:center 20%}
+.dev::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(9,14,30,.92) 15%,rgba(9,14,30,0) 60%)}
+.dev span{position:absolute;z-index:2;left:12px;right:12px;bottom:12px;color:#fff;font-weight:800;font-size:15px;line-height:1.25}
+.dev i{position:absolute;z-index:2;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#1A1405;display:none;place-items:center;font-style:normal;font-weight:900}
+.dev.on i{display:grid}
+
+/* ---------- HEADER ---------- */
+#hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#hdr .wrap{display:flex;align-items:center;gap:22px;height:64px}
+#hdr .logo{font-size:21px}
+#nav{display:flex;gap:2px;margin-left:12px}
+#nav a{padding:8px 12px;border-radius:999px;font-weight:700;font-size:14px;color:var(--mut);transition:color .15s,background .15s}
+#nav a:hover{color:var(--ink)}#nav a.on{color:var(--ink);background:var(--card)}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--ink)}
+.icon-btn:hover{background:var(--card)}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--wine) center/cover;color:#fff;font-weight:800;display:grid;place-items:center;border:2px solid var(--gold);font-size:15px;flex:none}
+@media(max-width:1099px){#nav{display:none}}
+
+/* bottom nav */
+#bnav{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:repeat(5,1fr);background:color-mix(in srgb,var(--bg2) 96%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+#bnav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:52px;font-size:11.5px;font-weight:700;color:var(--dim)}
+#bnav a.on{color:var(--ink)}#bnav a.on .ico{color:var(--gold)}
+@media(min-width:1100px){#bnav{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;background:var(--navy);min-height:min(78vh,640px);display:flex;align-items:center}
+.hero .ph{position:absolute;top:0;right:0;bottom:0;width:58%;background:url(assets/img/maria.jpg) center 22%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#101A35 38%,rgba(16,26,53,.65) 55%,rgba(16,26,53,0) 75%),linear-gradient(0deg,var(--bg) 0%,rgba(16,26,53,0) 22%)}
+.hero>.wrap{width:100%;position:relative;z-index:2}
+.hero .c{position:relative;z-index:2;max-width:620px;padding:60px 0 90px;color:#fff}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,5.4vw,70px);line-height:1.1;margin:14px 0 16px}
+.hero h1 em{font-style:italic;color:var(--gold2)}
+.hero p{font-size:clamp(16px,1.4vw,19px);color:#D7DDEC;margin:0 0 26px;max-width:520px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero .b-line{color:#fff}
+.hero .greet{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.35);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:700;color:#F1E3B2}
+@media(max-width:899px){
+  .hero{display:block;min-height:0}
+  .hero .ph{position:relative;width:100%;height:46vh;min-height:300px}
+  .hero::after{background:linear-gradient(0deg,#101A35 46%,rgba(16,26,53,0) 70%),linear-gradient(0deg,var(--bg) 0%,rgba(16,26,53,0) 8%)}
+  .hero .c{margin-top:-120px;padding:0 0 40px}
+  .hero .btns .btn{flex:1}
+}
+
+/* ---------- ROWS ---------- */
+.rows{padding-top:8px}
+.row{margin:30px 0 8px}
+.row-h{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+.row-h h2{font-family:var(--serif);font-size:clamp(24px,2.4vw,30px);font-weight:700;line-height:1.1}
+.row-h p{margin:2px 0 0;color:var(--mut);font-size:14px}
+.row-h a{font-weight:800;font-size:14px;color:var(--gold);white-space:nowrap}
+[data-theme=light] .row-h a{color:#8A6B12}
+.rail-w{position:relative}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 16px;scrollbar-width:none;scroll-padding:0 2px}
+.rail::-webkit-scrollbar{display:none}
+.arr{position:absolute;top:40%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;z-index:3;opacity:0;transition:opacity .2s;box-shadow:var(--shadow)}
+.rail-w:hover .arr{opacity:1}.arr.l{left:-14px}.arr.r{right:-14px}
+@media(hover:none){.arr{display:none}}
+.card{flex:0 0 clamp(236px,21vw,280px);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-align:left;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--gold) 55%,var(--line))}
+.card .ph{aspect-ratio:16/10;background-size:cover;background-position:center 25%;position:relative}
+.card .ph .tag{position:absolute;top:10px;left:10px}
+.card .ph .prog{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(0,0,0,.35)}
+.card .ph .prog b{display:block;height:100%;background:var(--gold)}
+.card .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{font-family:var(--serif);font-size:21px;line-height:1.15;font-weight:700}
+.card p{margin:0;color:var(--mut);font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .go{margin-top:auto;padding-top:10px;font-weight:800;font-size:14px;color:var(--gold);display:flex;align-items:center;gap:6px}
+[data-theme=light] .card .go{color:#8A6B12}
+.card.wide{flex-basis:clamp(300px,34vw,440px)}
+.card.ask{background:linear-gradient(160deg,var(--card2),var(--card));justify-content:space-between;padding:18px;min-height:176px}
+.card.ask .q{font-family:var(--serif);font-size:22px;line-height:1.2;font-weight:700}
+.card.ask .q::before{content:"“";color:var(--gold);font-size:34px;line-height:0;vertical-align:-10px;margin-right:2px}
+
+/* ---------- PAGES ---------- */
+.page{padding-top:26px;padding-bottom:40px}
+.ph-h{margin-bottom:22px}
+.ph-h h1{font-family:var(--serif);font-size:clamp(32px,3.6vw,46px);line-height:1.12;margin:6px 0 6px}
+.ph-h p{margin:0;color:var(--mut);max-width:640px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--mut);font-weight:700;font-size:14.5px;min-height:40px;margin-bottom:6px}
+.back:hover{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.grid .card{flex:none}
+.panel-c{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-weight:700;font-size:14px;color:var(--mut)}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#1A1405}
+.list{display:flex;flex-direction:column;gap:10px}
+.li{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-height:64px;text-align:left;width:100%}
+.li:hover{border-color:color-mix(in srgb,var(--gold) 50%,var(--line))}
+.li .th{width:52px;height:52px;border-radius:10px;background-size:cover;background-position:center 20%;flex:none}
+.li b{display:block;font-size:16px;line-height:1.3}.li small{color:var(--mut);font-size:13.5px}
+.li .end{margin-left:auto;color:var(--dim);display:flex;align-items:center;gap:8px}
+.prayer-text{font-family:var(--serif);font-size:clamp(21px,2vw,25px);line-height:1.55;white-space:pre-line;margin:0}
+.split{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+@media(max-width:899px){.split{grid-template-columns:1fr}}
+.cover{border-radius:var(--r);aspect-ratio:16/9;background-size:cover;background-position:center 25%;margin-bottom:18px}
+.toggle{position:relative;width:48px;height:28px;border-radius:999px;background:var(--line);flex:none;transition:background .2s}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s}
+.toggle.on{background:var(--gold)}.toggle.on::after{transform:translateX(20px)}
+.note{font-size:13px;color:var(--dim);border-left:3px solid var(--gold);padding:6px 12px;background:var(--card2);border-radius:0 8px 8px 0;margin:14px 0}
+.lab{display:block;font-size:13px;font-weight:800;color:var(--mut);margin:0 0 6px}
+.section{margin:28px 0 12px;font-family:var(--serif);font-size:26px;font-weight:700}
+
+/* terço */
+.terco{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:32px;align-items:center}
+@media(max-width:899px){.terco{grid-template-columns:1fr;gap:10px}.terco .ros{max-width:210px}.tc-text{min-height:0;font-size:20px}}
+.ros{width:100%;max-width:440px;margin:0 auto;display:block}
+.ros circle{transition:fill .2s,r .2s}
+.ros .bd{cursor:pointer}
+.tc-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.tc-box h2{font-family:var(--serif);font-size:30px;line-height:1.1;margin:6px 0 4px}
+.tc-mys{color:var(--gold);font-weight:800;font-size:14px}
+[data-theme=light] .tc-mys{color:#8A6B12}
+.tc-text{font-family:var(--serif);font-size:21px;line-height:1.5;margin:14px 0 18px;min-height:120px;white-space:pre-line}
+.tc-ctr{display:flex;gap:10px}
+.tc-ctr .btn{flex:1}
+.pbar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 4px}
+.pbar b{display:block;height:100%;background:var(--gold);transition:width .3s}
+
+/* novena calendar */
+.cal9{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;margin:12px 0}
+.cal9 button{aspect-ratio:1;border-radius:10px;border:1px solid var(--line);background:var(--card2);font-weight:800;color:var(--mut)}
+.cal9 button.done{background:var(--gold);border-color:var(--gold);color:#1A1405}
+.cal9 button.cur{border-color:var(--gold);color:var(--ink)}
+
+/* chat */
+.chat{display:flex;flex-direction:column;gap:12px;min-height:46vh}
+.msg{max-width:min(620px,88%);padding:14px 16px;border-radius:16px;font-size:15.5px;line-height:1.6;white-space:pre-line}
+.msg.me{align-self:flex-end;background:var(--gold);color:#1A1405;border-bottom-right-radius:4px;font-weight:600}
+.msg.ai{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.ai .src{display:block;margin-top:10px;font-size:12.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:8px}
+.composer{position:sticky;bottom:calc(74px + env(safe-area-inset-bottom));display:flex;gap:8px;background:var(--bg);padding:12px 0}
+@media(min-width:1100px){.composer{bottom:0}}
+.composer .in{margin:0;border-radius:999px}
+.composer .btn{flex:none}
+.dots span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mut);margin-right:4px;animation:bl 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* calendar */
+.month{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.month .dow{font-size:12px;font-weight:800;color:var(--dim);text-align:center;padding:4px 0}
+.day{min-height:64px;border-radius:10px;background:var(--card);border:1px solid var(--line);padding:6px;text-align:left;font-weight:800;font-size:14px;position:relative}
+.day.today{border-color:var(--gold)}
+.day .dt{display:block;width:7px;height:7px;border-radius:50%;margin-top:6px}
+.day.empty{background:none;border:0}
+@media(max-width:600px){.day{min-height:48px;font-size:13px;padding:5px}}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:899px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.plan.best{border:2px solid var(--gold);position:relative}
+.plan .price{font-family:var(--serif);font-size:44px;font-weight:700;line-height:1}
+.plan .price small{font-family:var(--sans);font-size:15px;color:var(--mut);font-weight:600}
+.plan ul{margin:6px 0 14px;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.plan li::before{content:"✓";color:var(--gold);font-weight:900;margin-right:8px}
+
+/* modal + toast */
+#modal{position:fixed;inset:0;z-index:150;background:rgba(5,9,20,.7);display:none;align-items:center;justify-content:center;padding:16px}
+#modal.on{display:flex}
+.m-box{width:min(460px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.m-box h2{font-family:var(--serif);font-size:30px;line-height:1.1;margin:8px 0 8px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(14px);background:var(--card2);border:1px solid var(--line);color:var(--ink);padding:12px 18px;border-radius:12px;font-weight:700;font-size:14.5px;z-index:300;opacity:0;transition:all .25s;pointer-events:none;box-shadow:var(--shadow);width:max-content;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.acc{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:10px;overflow:hidden}
+.acc summary{padding:16px 18px;font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.acc summary::after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+.acc[open] summary::after{content:"–"}
+.acc .in-acc{padding:0 18px 18px;color:var(--mut)}
+.acc .in-acc ol,.acc .in-acc ul{padding-left:20px;margin:6px 0}
+.acc .in-acc li{margin-bottom:6px}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:var(--dim);font-size:12.5px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- AUTH -->
+<section id="auth" class="hide">
+  <div class="art"></div>
+  <div class="panel"><div class="auth-box">
+    <div class="logo"><svg class="ico" viewBox="0 0 24 24" style="width:28px;height:28px"><path d="M12 2v20M6 8h12"/></svg>Fé Católica <b>IA</b></div>
+    <h1>Sua fé em todos os momentos.</h1>
+    <p class="mut" style="margin:0">Orações, terço, novenas, santos e um assistente católico, em um só lugar.</p>
+    <div class="seg"><button id="tabIn" class="on" onclick="authTab('in')">Entrar</button><button id="tabUp" onclick="authTab('up')">Criar conta</button></div>
+    <form id="fIn" onsubmit="event.preventDefault();login()">
+      <input class="in" type="email" placeholder="E-mail" required>
+      <input class="in" type="password" placeholder="Senha" required>
+      <button class="btn b-gold b-block" type="submit">Entrar</button>
+      <p style="text-align:center;margin:12px 0 0"><a class="link" href="javascript:forgot()">Esqueci minha senha</a></p>
+    </form>
+    <form id="fUp" class="hide" onsubmit="event.preventDefault();signup()">
+      <input class="in" id="suName" placeholder="Seu nome" required>
+      <input class="in" id="suMail" type="email" placeholder="E-mail" required>
+      <input class="in" type="password" placeholder="Crie uma senha (mín. 6 caracteres)" minlength="6" required>
+      <button class="btn b-gold b-block" type="submit">Criar minha conta</button>
+    </form>
+    <div class="or">ou</div>
+    <button class="g-btn" onclick="googleLogin()"><svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Continuar com Google</button>
+    <p class="fine">Protótipo: qualquer e-mail e senha funcionam. Seus dados ficam só neste aparelho. Ao continuar você concorda com os Termos e a Política de Privacidade (LGPD).</p>
+  </div></div>
+</section>
+
+<!-- ONBOARDING -->
+<section id="onb" class="hide"><div class="narrow" style="max-width:980px">
+  <span class="kick">Bem-vindo(a)</span>
+  <h1 class="serif" style="font-size:clamp(32px,4vw,48px);line-height:1.15;margin:8px 0 6px">Qual devoção é especial para você?</h1>
+  <p class="mut" style="margin:0">Escolha uma ou mais. Vamos preparar orações e novenas para a sua devoção.</p>
+  <div class="dev-grid" id="devGrid"></div>
+  <button class="btn b-gold" style="min-width:240px" onclick="finishOnb()">Continuar</button>
+  <button class="btn" style="color:var(--mut)" onclick="finishOnb(true)">Pular por enquanto</button>
+</div></section>
+
+<!-- APP -->
+<header id="hdr"><div class="wrap">
+  <a href="#/" class="logo"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M12 2v20M6 8h12"/></svg>Fé Católica <b>IA</b></a>
+  <nav id="nav">
+    <a href="#/" data-r="home">Início</a><a href="#/terco" data-r="terco">Terço</a><a href="#/oracoes" data-r="oracoes">Orações</a><a href="#/novenas" data-r="novenas">Novenas</a><a href="#/santo" data-r="santo">Santo do dia</a><a href="#/liturgia" data-r="liturgia">Liturgia</a><a href="#/ia" data-r="ia">Amigo da Fé IA</a><a href="#/explorar" data-r="explorar">Explorar</a>
+  </nav>
+  <div class="hdr-r">
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Modo claro ou escuro" id="themeBtn"></button>
+    <a href="#/perfil" class="avatar" id="hdrAv" aria-label="Meu perfil"></a>
+  </div>
+</div></header>
+
+<main id="view"></main>
+
+<nav id="bnav">
+  <a href="#/" data-r="home"><svg class="ico" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10h-6v-6H9v6H3z"/></svg>Início</a>
+  <a href="#/terco" data-r="terco"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M12 15v7M9.5 19h5"/></svg>Terço</a>
+  <a href="#/oracoes" data-r="oracoes"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M12 7v6M9.5 9.5h5"/></svg>Orações</a>
+  <a href="#/ia" data-r="ia"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v5M9.5 10.5h5"/></svg>Amigo IA</a>
+  <a href="#/explorar" data-r="explorar"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>Explorar</a>
+</nav>
+
+<div id="modal" onclick="if(event.target===this)closeM()"><div class="m-box" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="photoIn" accept="image/*" class="hide">
+
+<script>
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+const IMG=n=>`assets/img/${n}.jpg`;
+const P={
+ pai:`Pai nosso que estais nos céus, santificado seja o vosso nome, venha a nós o vosso reino, seja feita a vossa vontade, assim na terra como no céu.\nO pão nosso de cada dia nos dai hoje, perdoai-nos as nossas ofensas, assim como nós perdoamos a quem nos tem ofendido, e não nos deixeis cair em tentação, mas livrai-nos do mal. Amém.`,
+ ave:`Ave Maria, cheia de graça, o Senhor é convosco, bendita sois vós entre as mulheres e bendito é o fruto do vosso ventre, Jesus.\nSanta Maria, Mãe de Deus, rogai por nós pecadores, agora e na hora de nossa morte. Amém.`,
+ gloria:`Glória ao Pai, ao Filho e ao Espírito Santo. Como era no princípio, agora e sempre. Amém.`,
+ fatima:`Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai as almas todas para o céu e socorrei principalmente as que mais precisarem.`,
+ credo:`Creio em Deus Pai todo-poderoso, criador do céu e da terra; e em Jesus Cristo, seu único Filho, nosso Senhor, que foi concebido pelo poder do Espírito Santo; nasceu da Virgem Maria; padeceu sob Pôncio Pilatos, foi crucificado, morto e sepultado; desceu à mansão dos mortos; ressuscitou ao terceiro dia; subiu aos céus, está sentado à direita de Deus Pai todo-poderoso, donde há de vir a julgar os vivos e os mortos.\nCreio no Espírito Santo, na santa Igreja católica, na comunhão dos santos, na remissão dos pecados, na ressurreição da carne, na vida eterna. Amém.`,
+ salve:`Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas.\nEia, pois, advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria.\nRogai por nós, santa Mãe de Deus, para que sejamos dignos das promessas de Cristo. Amém.`,
+ eterno:`Eterno Pai, eu vos ofereço o Corpo e o Sangue, a Alma e a Divindade de vosso diletíssimo Filho, Nosso Senhor Jesus Cristo, em expiação dos nossos pecados e dos do mundo inteiro.`,
+ dolorosa:`Pela sua dolorosa Paixão, tende misericórdia de nós e do mundo inteiro.`,
+ santo:`Deus Santo, Deus Forte, Deus Imortal, tende piedade de nós e do mundo inteiro.`,
+};
+const MYST={
+ gozosos:{n:'Mistérios Gozosos',d:'Segunda e sábado',img:'anunciacao',l:['A Anunciação do Anjo a Maria','A visita de Maria a sua prima Isabel','O nascimento de Jesus em Belém','A apresentação de Jesus no Templo','A perda e o encontro de Jesus no Templo']},
+ luminosos:{n:'Mistérios Luminosos',d:'Quinta-feira',img:'ceia',l:['O Batismo de Jesus no Jordão','A autorrevelação de Jesus nas Bodas de Caná','O anúncio do Reino de Deus e o convite à conversão','A Transfiguração do Senhor','A instituição da Eucaristia']},
+ dolorosos:{n:'Mistérios Dolorosos',d:'Terça e sexta',img:'jesus',l:['A agonia de Jesus no Horto','A flagelação de Jesus','A coroação de espinhos','Jesus carrega a cruz até o Calvário','A crucifixão e morte de Jesus']},
+ gloriosos:{n:'Mistérios Gloriosos',d:'Quarta e domingo',img:'pentecostes',l:['A Ressurreição de Jesus','A Ascensão de Jesus ao Céu','A vinda do Espírito Santo','A Assunção de Maria ao Céu','A coroação de Maria como Rainha do Céu e da Terra']},
+};
+const DAYMYST=['gloriosos','gozosos','dolorosos','gloriosos','luminosos','dolorosos','gozosos'];
+const TERCOS=[
+ {id:'mariano',t:'Terço Mariano',d:'O mistério do dia, com as orações tradicionais',img:'rosario'},
+ {id:'gozosos',t:'Mistérios Gozosos',d:'Segunda e sábado',img:'anunciacao'},
+ {id:'luminosos',t:'Mistérios Luminosos',d:'Quinta-feira',img:'ceia'},
+ {id:'dolorosos',t:'Mistérios Dolorosos',d:'Terça e sexta',img:'jesus'},
+ {id:'gloriosos',t:'Mistérios Gloriosos',d:'Quarta e domingo',img:'pentecostes'},
+ {id:'misericordia',t:'Terço da Divina Misericórdia',d:'Rezado às 15h, a hora da misericórdia',img:'misericordia'},
+ {id:'miguel',t:'Terço de São Miguel Arcanjo',d:'Nove saudações aos coros dos anjos',img:'miguel',soon:true},
+];
+
+const CATS=[
+ {id:'manha',t:'Orações da manhã',img:'nascimento'},{id:'noite',t:'Orações da noite',img:'igreja'},{id:'familia',t:'Pela família',img:'jose'},{id:'filhos',t:'Pelos filhos',img:'antonio'},
+ {id:'enfermos',t:'Pelos enfermos',img:'sagrado'},{id:'gratidao',t:'De agradecimento',img:'oracao'},{id:'protecao',t:'De proteção',img:'miguel'},{id:'dificeis',t:'Momentos difíceis',img:'jesus'},
+ {id:'paz',t:'Pela paz',img:'pentecostes'},{id:'falecidos',t:'Pelos falecidos',img:'ceu'},{id:'dormir',t:'Antes de dormir',img:'maria'},{id:'fe',t:'Para fortalecer a fé',img:'anunciacao'},
+];
+const ORACOES=[
+ {id:'painosso',t:'Pai Nosso',c:'fe',tx:P.pai,trad:1},
+ {id:'avemaria',t:'Ave Maria',c:'fe',tx:P.ave,trad:1},
+ {id:'credo',t:'Creio (Símbolo dos Apóstolos)',c:'fe',tx:P.credo,trad:1},
+ {id:'salve',t:'Salve Rainha',c:'dormir',tx:P.salve,trad:1},
+ {id:'anjo',t:'Santo Anjo do Senhor',c:'protecao',tx:`Santo Anjo do Senhor, meu zeloso guardador, se a ti me confiou a piedade divina, sempre me rege, me guarda, me governa e me ilumina. Amém.`,trad:1},
+ {id:'miguel',t:'Oração a São Miguel Arcanjo',c:'protecao',tx:`São Miguel Arcanjo, defendei-nos no combate, sede o nosso refúgio contra as maldades e ciladas do demônio.\nOrdene-lhe Deus, instantemente o pedimos; e vós, príncipe da milícia celeste, pela virtude divina, precipitai no inferno a Satanás e aos outros espíritos malignos que andam pelo mundo para perder as almas. Amém.`,trad:1},
+ {id:'espirito',t:'Vinde, Espírito Santo',c:'fe',tx:`Vinde, Espírito Santo, enchei os corações dos vossos fiéis e acendei neles o fogo do vosso amor.\nEnviai o vosso Espírito e tudo será criado, e renovareis a face da terra.\n\nOremos: Ó Deus, que instruístes os corações dos vossos fiéis com as luzes do Espírito Santo, concedei-nos que, no mesmo Espírito, saibamos o que é reto e gozemos sempre de suas consolações. Por Cristo, Senhor nosso. Amém.`,trad:1},
+ {id:'oferecimento',t:'Oferecimento do dia',c:'manha',tx:`Senhor, no começo deste dia eu Vos ofereço tudo o que sou e tudo o que farei: meus pensamentos, minhas palavras, meu trabalho, minhas alegrias e minhas dificuldades.\nGuardai-me de todo mal e fazei que, em tudo, eu procure a Vossa vontade.\nNossa Senhora, minha Mãe, acompanhai-me hoje. Amém.`},
+ {id:'manha2',t:'Bom dia, Senhor',c:'manha',tx:`Obrigado, Senhor, por mais um dia de vida.\nAbençoai a minha casa, a minha família e todos que eu encontrar hoje.\nQue eu seja sinal do Vosso amor onde eu estiver. Amém.`},
+ {id:'noite1',t:'Exame do dia',c:'noite',tx:`Senhor, ao final deste dia, eu Vos agradeço por todo o bem que recebi.\nPeço perdão pelas vezes em que não amei como deveria.\nEntrego em Vossas mãos o que não consegui resolver, e descanso na Vossa paz. Amém.`},
+ {id:'familia1',t:'Oração pela família',c:'familia',tx:`Senhor Jesus, abençoai a nossa família.\nFazei da nossa casa um lugar de paz, de perdão e de oração.\nUni o que está separado, curai o que está ferido e guardai cada um de nós no Vosso amor.\nSagrada Família de Nazaré, rogai por nós. Amém.`},
+ {id:'filhos1',t:'Oração pelos filhos',c:'filhos',tx:`Senhor, eu Vos entrego os meus filhos.\nGuardai-os onde eu não consigo chegar.\nColocai Vossos anjos no caminho deles, livrai-os de todo mal e trazei cada um para perto de Vós.\nNossa Senhora, cobri-os com o vosso manto. Amém.`},
+ {id:'enfermos1',t:'Oração pelos enfermos',c:'enfermos',tx:`Senhor Jesus, Médico dos corpos e das almas, olhai com amor para os doentes.\nAliviai suas dores, fortalecei sua fé e abençoai as mãos de quem cuida deles.\nNossa Senhora da Saúde, rogai por nós. Amém.`},
+ {id:'gratidao1',t:'Oração de gratidão',c:'gratidao',tx:`Obrigado, Senhor, pelo dom da vida, pela minha família, pelo pão de cada dia e por todas as graças que nem percebi.\nQue o meu coração seja sempre agradecido. Amém.`},
+ {id:'dificil1',t:'Em um momento difícil',c:'dificeis',tx:`Senhor, Vós conheceis o peso que eu carrego.\nNão me deixeis desanimar. Dai-me forças para hoje, e confiança para o amanhã.\nJesus, eu confio em Vós. Amém.`},
+ {id:'paz1',t:'Oração pela paz',c:'paz',tx:`Senhor, fazei-me instrumento da Vossa paz.\nOnde houver ódio, que eu leve o amor; onde houver ofensa, que eu leve o perdão; onde houver discórdia, que eu leve a união.\nDai a paz ao nosso mundo, às nossas famílias e aos nossos corações. Amém.`},
+ {id:'falecidos1',t:'Pelos fiéis defuntos',c:'falecidos',tx:`Dai-lhes, Senhor, o descanso eterno, e a luz perpétua os ilumine.\nDescansem em paz. Amém.`,trad:1},
+ {id:'dormir1',t:'Antes de dormir',c:'dormir',tx:`Senhor, nesta noite eu entrego em Vossas mãos o meu descanso.\nGuardai a minha casa e os que eu amo.\nSanto Anjo da Guarda, velai pelo meu sono. Amém.`},
+ {id:'contricao',t:'Ato de contrição',c:'fe',tx:`Meu Deus, eu me arrependo de todo o coração de Vos ter ofendido, porque sois tão bom e amável.\nPrometo, com a Vossa graça, esforçar-me para ser bom.\nMeu Jesus, misericórdia!`,trad:1},
+];
+
+const SAINTS=[
+ {id:'jp2',n:'São João Paulo II',d:'22 de outubro',md:'10-22',img:'jp2',h:'Karol Wojtyła nasceu em 1920, em Wadowice, na Polônia. Perdeu a mãe e o irmão ainda jovem, trabalhou numa pedreira durante a ocupação nazista e estudou para o sacerdócio clandestinamente. Foi ordenado em 1946, tornou-se arcebispo de Cracóvia e foi eleito Papa em 16 de outubro de 1978, o primeiro não italiano em mais de 450 anos. Seu pontificado durou até sua morte, em 2 de abril de 2005. Foi canonizado em 27 de abril de 2014.',e:['“Não tenhais medo! Abri, ou melhor, escancarai as portas a Cristo!” (homilia de início do pontificado, 22/10/1978)','A dignidade de toda pessoa humana e a defesa da vida','O amor à família e aos jovens: criou a Jornada Mundial da Juventude'],c:['A data da memória, 22 de outubro, é o dia da missa de início do seu pontificado.','Acrescentou os Mistérios Luminosos ao Rosário em 2002 (carta Rosarium Virginis Mariae).','Visitou o Brasil quatro vezes como Papa.'],o:`São João Paulo II, que nos ensinastes a não ter medo de abrir as portas a Cristo, intercedei por nós e pelas nossas famílias, para que vivamos com coragem a nossa fé. Amém.`},
+ {id:'aparecida',n:'Nossa Senhora Aparecida',d:'12 de outubro',md:'10-12',img:'aparecida',h:'Em outubro de 1717, os pescadores Domingos Garcia, João Alves e Filipe Pedroso lançaram as redes no rio Paraíba do Sul em busca de peixes para uma visita do governador. Primeiro encontraram o corpo e depois a cabeça de uma pequena imagem de Nossa Senhora da Conceição. Depois disso, as redes se encheram de peixes. A devoção cresceu e, em 1930, o Papa Pio XI a proclamou Padroeira do Brasil.',e:['Confiança na intercessão de Maria','A fé simples do povo, nascida entre pescadores'],c:['A imagem original, de terracota, mede cerca de 36 cm.','O Santuário Nacional, em Aparecida (SP), é um dos maiores templos marianos do mundo.'],o:`Ó Senhora Aparecida, Mãe e Padroeira do Brasil, olhai pela nossa pátria e pelas nossas famílias. Guardai-nos sob o vosso manto e levai-nos sempre a Jesus. Amém.`},
+ {id:'rita',n:'Santa Rita de Cássia',d:'22 de maio',md:'05-22',img:'rita',h:'Nasceu por volta de 1381, perto de Cássia, na Itália. Foi esposa, mãe e viúva: perdeu o marido de forma violenta e, depois, os dois filhos. Perdoou os assassinos do marido e entrou no mosteiro agostiniano de Santa Maria Madalena, em Cássia, onde viveu em oração até morrer, em 1457. Foi canonizada em 1900 pelo Papa Leão XIII.',e:['O perdão como caminho de paz','A perseverança na oração'],c:['É chamada de “santa das causas impossíveis”.','Tradição devocional: teria recebido na testa uma ferida semelhante a um espinho da coroa de Cristo.'],o:`Santa Rita de Cássia, advogada das causas impossíveis, intercedei por mim nesta necessidade e alcançai-me a graça de confiar sempre em Deus. Amém.`},
+ {id:'antonio',n:'Santo Antônio',d:'13 de junho',md:'06-13',img:'antonio',h:'Nasceu em Lisboa, por volta de 1195, com o nome de Fernando. Foi cônego agostiniano e depois tornou-se frade franciscano, adotando o nome Antônio. Grande pregador, morreu em Pádua, na Itália, em 1231, e foi canonizado menos de um ano depois. É Doutor da Igreja.',e:['A pregação da Palavra de Deus','O cuidado com os pobres'],c:['No Brasil é lembrado como “santo casamenteiro” (tradição popular).','É invocado para encontrar objetos perdidos.'],o:`Santo Antônio, amigo dos pobres e pregador do Evangelho, intercedei por nós junto a Deus. Amém.`},
+ {id:'francisco',n:'São Francisco de Assis',d:'4 de outubro',md:'10-04',img:'francisco',h:'Nasceu em Assis, na Itália, por volta de 1181. Filho de um rico comerciante, deixou tudo para viver o Evangelho na pobreza. Fundou a Ordem dos Frades Menores e morreu em 1226.',e:['Pobreza e simplicidade','Amor à criação, expresso no Cântico das Criaturas'],c:['É padroeiro da Itália e da ecologia.','A tradição atribui a ele o primeiro presépio, em Greccio, em 1223.'],o:`São Francisco de Assis, ensinai-nos a viver com simplicidade e a amar a Deus em todas as criaturas. Amém.`},
+ {id:'jose',n:'São José',d:'19 de março',md:'03-19',img:'jose',h:'Esposo da Virgem Maria e pai adotivo de Jesus, descendente de Davi, carpinteiro em Nazaré. Os Evangelhos o descrevem como “homem justo” (Mt 1,19), que acolheu o plano de Deus em silêncio e obediência.',e:['Obediência e confiança em Deus','O trabalho honesto e o cuidado da família'],c:['É padroeiro da Igreja universal.','O Papa Francisco dedicou a ele um Ano Especial (2020–2021).'],o:`São José, guardião da Sagrada Família, protegei a nossa casa e o nosso trabalho. Amém.`},
+ {id:'padrepio',n:'São Padre Pio de Pietrelcina',d:'23 de setembro',md:'09-23',img:'padrepio',h:'Francesco Forgione nasceu em 1887, em Pietrelcina, na Itália. Frade capuchinho, viveu a maior parte da vida em San Giovanni Rotondo, dedicado à confissão e à oração. Morreu em 1968 e foi canonizado em 2002 por São João Paulo II.',e:['“Reze, espere e não se preocupe.”','O valor da confissão frequente'],c:['Fundou um grande hospital, a Casa Sollievo della Sofferenza.','Tradição: carregou os estigmas por cerca de 50 anos.'],o:`São Padre Pio, intercedei por nós e ensinai-nos a rezar com confiança. Amém.`},
+ {id:'judas',n:'São Judas Tadeu',d:'28 de outubro',md:'10-28',img:'judas',h:'Um dos doze Apóstolos, chamado também de Tadeu. Segundo a tradição, pregou o Evangelho e morreu mártir. É celebrado junto com São Simão.',e:['Perseverança na fé'],c:['É invocado nas causas difíceis e desesperadas.'],o:`São Judas Tadeu, apóstolo de Jesus, intercedei por nós nas causas difíceis. Amém.`},
+ {id:'fatima',n:'Nossa Senhora de Fátima',d:'13 de maio',md:'05-13',img:'fatima',h:'Entre maio e outubro de 1917, em Fátima, Portugal, três pastorinhos (Lúcia, Francisco e Jacinta) relataram aparições de Nossa Senhora, que pedia oração, penitência e a reza diária do terço. Em 13 de outubro de 1917, milhares de pessoas relataram o “milagre do sol”. As aparições foram reconhecidas pela Igreja em 1930.',e:['Rezar o terço todos os dias','Oração e conversão pela paz'],c:['Francisco e Jacinta foram canonizados em 2017.'],o:`Nossa Senhora de Fátima, ensinai-nos a rezar o terço com o coração. Amém.`},
+ {id:'gracas',n:'Nossa Senhora das Graças',d:'27 de novembro',md:'11-27',img:'gracas',h:'Em 1830, em Paris, a noviça Catarina Labouré relatou aparições de Nossa Senhora, que lhe pediu a cunhagem de uma medalha. A medalha espalhou-se rapidamente e ficou conhecida como Medalha Milagrosa.',e:['A confiança em Maria, medianeira de graças'],c:['Inscrição da medalha: “Ó Maria concebida sem pecado, rogai por nós que recorremos a vós.”'],o:`Ó Maria concebida sem pecado, rogai por nós que recorremos a vós. Amém.`},
+ {id:'faustina',n:'Santa Faustina e a Divina Misericórdia',d:'2º domingo da Páscoa',md:'',img:'misericordia',h:'Santa Faustina Kowalska (1905–1938), religiosa polonesa, registrou em seu Diário as revelações sobre a Misericórdia de Deus. A imagem de Jesus Misericordioso foi pintada em 1934. A Festa da Divina Misericórdia foi instituída por São João Paulo II em 2000.',e:['“Jesus, eu confio em Vós.”'],c:['A Hora da Misericórdia é às 15h.'],o:`Jesus, eu confio em Vós. Amém.`},
+];
+const DEVS=[{id:'aparecida',n:'Nossa Senhora Aparecida',img:'aparecida'},{id:'fatima',n:'Nossa Senhora de Fátima',img:'fatima'},{id:'gracas',n:'Nossa Senhora das Graças',img:'gracas'},{id:'jose',n:'São José',img:'jose'},{id:'antonio',n:'Santo Antônio',img:'antonio'},{id:'rita',n:'Santa Rita de Cássia',img:'rita'},{id:'francisco',n:'São Francisco de Assis',img:'francisco'},{id:'padrepio',n:'São Padre Pio',img:'padrepio'},{id:'misericordia',n:'Divina Misericórdia',img:'misericordia'},{id:'sagrado',n:'Sagrado Coração de Jesus',img:'sagrado'},{id:'miguel',n:'São Miguel Arcanjo',img:'miguel'},{id:'judas',n:'São Judas Tadeu',img:'judas'}];
+
+const NOVENAS=[
+ {id:'aparecida',t:'Novena de Nossa Senhora Aparecida',img:'aparecida',s:'aparecida',inv:'Ó Senhora Aparecida, Mãe e Padroeira do Brasil'},
+ {id:'rita',t:'Novena de Santa Rita de Cássia',img:'rita',s:'rita',inv:'Santa Rita de Cássia, advogada das causas impossíveis'},
+ {id:'jose',t:'Novena de São José',img:'jose',s:'jose',inv:'Glorioso São José, guardião da Sagrada Família'},
+ {id:'antonio',t:'Novena de Santo Antônio',img:'antonio',s:'antonio',inv:'Glorioso Santo Antônio, amigo dos pobres'},
+ {id:'gracas',t:'Novena de Nossa Senhora das Graças',img:'gracas',s:'gracas',inv:'Ó Maria concebida sem pecado'},
+ {id:'padrepio',t:'Novena de São Padre Pio',img:'padrepio',s:'padrepio',inv:'São Padre Pio, homem de oração'},
+ {id:'misericordia',t:'Novena da Divina Misericórdia',img:'misericordia',s:'faustina',inv:'Jesus misericordioso, em quem eu confio'},
+ {id:'judas',t:'Novena de São Judas Tadeu',img:'judas',s:'judas',inv:'São Judas Tadeu, apóstolo fiel'},
+ {id:'fatima',t:'Novena de Nossa Senhora de Fátima',img:'fatima',s:'fatima',inv:'Nossa Senhora de Fátima, Mãe do Rosário'},
+];
+const NTEMAS=['Entrega da intenção','A fé','A esperança','A caridade','A família','O perdão','A humildade','A perseverança','A ação de graças'];
+
+const DESAFIOS=[{id:'d7',t:'7 dias de gratidão',n:7,img:'oracao'},{id:'d9',t:'9 dias de oração',n:9,img:'igreja'},{id:'d21',t:'21 dias com Nossa Senhora',n:21,img:'maria'},{id:'d30',t:'30 dias de leitura bíblica',n:30,img:'biblia'},{id:'d40',t:'40 dias de preparação espiritual',n:40,img:'jesus'}];
+const MILAGRES=[
+ {t:'A imagem encontrada no rio',d:'Aparecida, 1717: pescadores encontram a imagem de Nossa Senhora e as redes se enchem.',img:'aparecida',s:'aparecida'},
+ {t:'O milagre do sol',d:'Fátima, 13 de outubro de 1917: milhares de pessoas relatam o sol “dançando” no céu.',img:'fatima',s:'fatima'},
+ {t:'A Medalha Milagrosa',d:'Paris, 1830: Nossa Senhora pede a Santa Catarina Labouré a cunhagem de uma medalha.',img:'gracas',s:'gracas'},
+ {t:'Jesus, eu confio em Vós',d:'Polônia, 1931: Santa Faustina recebe a mensagem da Divina Misericórdia.',img:'misericordia',s:'faustina'},
+];
+const QA={
+ 'Como rezar o terço?':{a:`O terço é rezado assim:\n\n1. Faça o sinal da cruz e reze o Creio.\n2. Reze um Pai Nosso, três Ave-Marias (pedindo fé, esperança e caridade) e um Glória.\n3. Para cada um dos 5 mistérios: anuncie o mistério, reze um Pai Nosso, dez Ave-Marias, um Glória e a oração “Ó meu Jesus”.\n4. Termine com a Salve Rainha.\n\nOs mistérios mudam conforme o dia: Gozosos (segunda e sábado), Dolorosos (terça e sexta), Gloriosos (quarta e domingo) e Luminosos (quinta).\n\nQuer rezar agora? Abra o Terço Digital no menu.`,s:'São João Paulo II, Carta Apostólica Rosarium Virginis Mariae (2002)'},
+ 'Qual a diferença entre pecado mortal e venial?':{a:`Para que um pecado seja mortal, três condições precisam estar presentes ao mesmo tempo:\n\n• matéria grave;\n• pleno conhecimento;\n• consentimento deliberado.\n\nO pecado mortal destrói a caridade no coração e, para ser perdoado, precisa do sacramento da Confissão.\n\nO pecado venial acontece quando a matéria é leve, ou quando é grave mas falta pleno conhecimento ou pleno consentimento. Ele enfraquece a caridade, mas não a destrói.\n\nSe tiver dúvida sobre uma situação concreta, converse com um sacerdote.`,s:'Catecismo da Igreja Católica, §1854–1864'},
+ 'Como me preparar para a confissão?':{a:`Uma boa confissão tem cinco passos:\n\n1. Exame de consciência: reveja sua vida com calma, à luz dos Mandamentos.\n2. Arrependimento (contrição): dor sincera por ter ofendido a Deus.\n3. Propósito de não pecar mais.\n4. Confessar os pecados ao sacerdote.\n5. Cumprir a penitência indicada.\n\nAqui no app há um guia de exame de consciência. Por respeito à sua privacidade, eu nunca peço nem guardo a lista dos seus pecados: isso fica só entre você e o sacerdote.`,s:'Catecismo da Igreja Católica, §1450–1460'},
+ 'Qual a história de Nossa Senhora Aparecida?':{a:`Em outubro de 1717, três pescadores (Domingos Garcia, João Alves e Filipe Pedroso) pescavam no rio Paraíba do Sul, em São Paulo, para uma visita do governador. Depois de muitas tentativas sem sucesso, encontraram nas redes o corpo e depois a cabeça de uma pequena imagem de Nossa Senhora da Conceição. Em seguida, pescaram tantos peixes que mal conseguiam levar.\n\nA devoção cresceu entre o povo e, em 1930, o Papa Pio XI proclamou Nossa Senhora Aparecida Padroeira do Brasil. Sua festa é celebrada em 12 de outubro.`,s:'Santuário Nacional de Aparecida (registro histórico da devoção)'},
+ 'O que a Igreja ensina sobre a Eucaristia?':{a:`A Igreja ensina que a Eucaristia é “fonte e ápice de toda a vida cristã”.\n\nNa Missa, pelas palavras da consagração, o pão e o vinho se tornam verdadeiramente o Corpo e o Sangue de Cristo. A Igreja chama essa mudança de transubstanciação. Jesus está presente de modo verdadeiro, real e substancial, com seu Corpo, Sangue, Alma e Divindade.\n\nPor isso adoramos Jesus no Santíssimo Sacramento e nos preparamos para recebê-lo em estado de graça.`,s:'Catecismo da Igreja Católica, §1324, §1374 e §1376; Lumen Gentium, 11'},
+};
+const BIBLE={AT:['Gênesis','Êxodo','Levítico','Números','Deuteronômio','Josué','Juízes','Rute','1 Samuel','2 Samuel','1 Reis','2 Reis','1 Crônicas','2 Crônicas','Esdras','Neemias','Tobias','Judite','Ester','1 Macabeus','2 Macabeus','Jó','Salmos','Provérbios','Eclesiastes','Cântico dos Cânticos','Sabedoria','Eclesiástico','Isaías','Jeremias','Lamentações','Baruc','Ezequiel','Daniel','Oseias','Joel','Amós','Abdias','Jonas','Miqueias','Naum','Habacuc','Sofonias','Ageu','Zacarias','Malaquias'],NT:['Mateus','Marcos','Lucas','João','Atos dos Apóstolos','Romanos','1 Coríntios','2 Coríntios','Gálatas','Efésios','Filipenses','Colossenses','1 Tessalonicenses','2 Tessalonicenses','1 Timóteo','2 Timóteo','Tito','Filemon','Hebreus','Tiago','1 Pedro','2 Pedro','1 João','2 João','3 João','Judas','Apocalipse']};
+const CHAP={'Gênesis':50,'Êxodo':40,'Levítico':27,'Números':36,'Deuteronômio':34,'Josué':24,'Juízes':21,'Rute':4,'1 Samuel':31,'2 Samuel':24,'1 Reis':22,'2 Reis':25,'1 Crônicas':29,'2 Crônicas':36,'Esdras':10,'Neemias':13,'Tobias':14,'Judite':16,'Ester':10,'1 Macabeus':16,'2 Macabeus':15,'Jó':42,'Salmos':150,'Provérbios':31,'Eclesiastes':12,'Cântico dos Cânticos':8,'Sabedoria':19,'Eclesiástico':51,'Isaías':66,'Jeremias':52,'Lamentações':5,'Baruc':6,'Ezequiel':48,'Daniel':14,'Oseias':14,'Joel':4,'Amós':9,'Abdias':1,'Jonas':4,'Miqueias':7,'Naum':3,'Habacuc':3,'Sofonias':3,'Ageu':2,'Zacarias':14,'Malaquias':3,'Mateus':28,'Marcos':16,'Lucas':24,'João':21,'Atos dos Apóstolos':28,'Romanos':16,'1 Coríntios':16,'2 Coríntios':13,'Gálatas':6,'Efésios':6,'Filipenses':4,'Colossenses':4,'1 Tessalonicenses':5,'2 Tessalonicenses':3,'1 Timóteo':6,'2 Timóteo':4,'Tito':3,'Filemon':1,'Hebreus':13,'Tiago':5,'1 Pedro':5,'2 Pedro':3,'1 João':5,'2 João':1,'3 João':1,'Judas':1,'Apocalipse':22};
+const FEASTS={'2026-10-01':['Santa Teresinha do Menino Jesus','m'],'2026-10-02':['Santos Anjos da Guarda','m'],'2026-10-04':['São Francisco de Assis','m'],'2026-10-07':['Nossa Senhora do Rosário','m'],'2026-10-12':['Nossa Senhora Aparecida, Padroeira do Brasil','s'],'2026-10-15':['Santa Teresa de Jesus','m'],'2026-10-18':['São Lucas, Evangelista','f'],'2026-10-22':['São João Paulo II','m'],'2026-10-28':['São Simão e São Judas Tadeu, Apóstolos','f'],'2026-11-01':['Todos os Santos','s'],'2026-11-02':['Fiéis Defuntos','s'],'2026-11-21':['Apresentação de Nossa Senhora','m'],'2026-11-22':['Nosso Senhor Jesus Cristo, Rei do Universo','s'],'2026-11-27':['Nossa Senhora das Graças (devoção)','d'],'2026-11-29':['1º Domingo do Advento','s'],'2026-12-08':['Imaculada Conceição de Nossa Senhora','s'],'2026-12-25':['Natal do Senhor','s']};
+const FCOL={s:'#D4AF37',f:'#722F37',m:'#6E8BD6',d:'#9AA3B8'};
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+const DEF={user:null,onb:false,theme:'dark',devs:[],fav:[],hist:[],terco:null,tercos:0,nov:{},plan:'free',diary:[],ints:[],chal:{},notif:{diaria:true,novena:true,santo:false,liturgia:true},rot:{manha:'oferecimento',noite:'noite1'},rem:{},notes:{},vfav:[],voice:false};
+let S=Object.assign({},DEF,JSON.parse(localStorage.getItem('fc_state')||'{}'));
+const save=()=>localStorage.setItem('fc_state',JSON.stringify(S));
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const go=h=>location.hash=h;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2800)}
+function log(txt){S.hist.unshift({t:txt,d:new Date().toISOString()});S.hist=S.hist.slice(0,40);save()}
+const today=new Date();const ymd=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const fdate=d=>d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+const first=n=>(n||'').split(' ')[0];
+const ICO={
+ arrow:'<svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+ back:'<svg class="ico" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M15 18l-6-6 6-6"/></svg>',
+ heart:f=>`<svg class="ico" viewBox="0 0 24 24" style="${f?'fill:#D4AF37;color:#D4AF37':''}"><path d="M12 21s-7.5-4.6-9.3-9.4C1.5 8.3 3.6 5 7 5c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 3.4 0 5.5 3.3 4.3 6.6C19.5 16.4 12 21 12 21z"/></svg>`,
+ share:'<svg class="ico" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>',
+ sound:'<svg class="ico" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+ lock:'<svg class="ico" viewBox="0 0 24 24" style="width:13px;height:13px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+ sun:'<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+ moon:'<svg class="ico" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+ l:'<svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>',r:'<svg class="ico" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>',
+};
+
+/* =========================================================
+   AUTH + ONBOARDING + TEMA
+   ========================================================= */
+function authTab(t){$('#tabIn').classList.toggle('on',t==='in');$('#tabUp').classList.toggle('on',t==='up');$('#fIn').classList.toggle('hide',t!=='in');$('#fUp').classList.toggle('hide',t!=='up')}
+function login(){const e=$('#fIn input[type=email]').value;S.user=S.user&&S.user.email===e?S.user:{name:e.split('@')[0].replace(/^\w/,c=>c.toUpperCase()),email:e,photo:null};save();boot()}
+function signup(){S.user={name:$('#suName').value.trim(),email:$('#suMail').value.trim(),photo:null};S.onb=false;save();boot()}
+function googleLogin(){S.user={name:'Maria',email:'maria@gmail.com',photo:null};save();toast('Protótipo: na versão final abre o login do Google');boot()}
+function forgot(){openM(`<span class="kick">Recuperar senha</span><h2>Esqueceu a senha?</h2><p class="mut">Digite seu e-mail e enviaremos um link para criar uma nova senha.</p><input class="in" type="email" placeholder="Seu e-mail"><button class="btn b-gold b-block" onclick="closeM();toast('Link enviado! Confira seu e-mail.')">Enviar link</button>`)}
+function logout(){S.user=null;save();boot()}
+function renderDevs(){$('#devGrid').innerHTML=DEVS.map(d=>`<button class="dev ${S.devs.includes(d.id)?'on':''}" onclick="togDev('${d.id}',this)"><div class="ph" style="background-image:url(${IMG(d.img)})"></div><i>✓</i><span>${d.n}</span></button>`).join('')}
+function togDev(id,el){const k=S.devs.indexOf(id);k<0?S.devs.push(id):S.devs.splice(k,1);el.classList.toggle('on');save()}
+function finishOnb(skip){S.onb=true;save();if(!skip&&S.devs.length)toast('Que lindo! Preparamos conteúdos para a sua devoção.');boot()}
+function applyTheme(){document.documentElement.dataset.theme=S.theme;$('#themeBtn').innerHTML=S.theme==='dark'?ICO.sun:ICO.moon;document.querySelector('meta[name=theme-color]').content=S.theme==='dark'?'#0B1328':'#F7F2E8'}
+function toggleTheme(){S.theme=S.theme==='dark'?'light':'dark';save();applyTheme()}
+function setAv(){const a=$('#hdrAv');if(S.user?.photo){a.style.backgroundImage=`url(${S.user.photo})`;a.textContent=''}else{a.style.backgroundImage='';a.textContent=(S.user?.name||'?')[0].toUpperCase()}}
+function boot(){applyTheme();const logged=!!S.user;$('#auth').classList.toggle('hide',logged);$('#onb').classList.toggle('hide',!logged||S.onb);['#hdr','#view','#bnav'].forEach(s=>$(s).classList.toggle('hide',!logged||!S.onb));if(logged&&!S.onb)renderDevs();if(logged&&S.onb){setAv();render()}}
+
+/* =========================================================
+   COMPONENTES
+   ========================================================= */
+function card(o){return `<div class="card ${o.cls||''}" role="button" tabindex="0" onclick="${o.on}" onkeydown="if(event.key==='Enter')this.click()">
+ <div class="ph" style="background-image:url(${IMG(o.img)});${o.pos?'background-position:'+o.pos:''}">${o.tag?`<span class="tag ${o.tagc||'t-gold'}" style="background:rgba(10,15,32,.75);color:#E9CC6B">${o.tag}</span>`:''}${o.prog!=null?`<div class="prog"><b style="width:${o.prog}%"></b></div>`:''}</div>
+ <div class="bd"><h3>${esc(o.t)}</h3><p>${esc(o.d||'')}</p><span class="go">${o.btn||'Acessar'} ${ICO.arrow}</span></div></div>`}
+function row(t,sub,items,link){const id='r'+Math.random().toString(36).slice(2,7);return `<section class="row"><div class="row-h"><div><h2>${t}</h2>${sub?`<p>${sub}</p>`:''}</div>${link?`<a href="${link}">Ver tudo</a>`:''}</div>
+ <div class="rail-w"><button class="arr l" onclick="sc('${id}',-1)" aria-label="Voltar">${ICO.l}</button><div class="rail" id="${id}">${items}</div><button class="arr r" onclick="sc('${id}',1)" aria-label="Avançar">${ICO.r}</button></div></section>`}
+function sc(id,d){const r=document.getElementById(id);r.scrollBy({left:d*r.clientWidth*.8,behavior:'smooth'})}
+const backL=(h,t)=>`<a class="back" href="${h}">${ICO.back} ${t}</a>`;
+function openM(h){$('#mbox').innerHTML=h;$('#modal').classList.add('on')}
+function closeM(){$('#modal').classList.remove('on')}
+function premium(fn,what){if(S.plan!=='free')return fn();openM(`<span class="tag t-gold">${ICO.lock} Premium</span><h2>${what} é um recurso Premium</h2><p class="mut">Assine o Premium para ter novenas com acompanhamento, diário espiritual, jornadas personalizadas, áudios e a IA com mais perguntas por dia.</p><div style="display:flex;flex-direction:column;gap:10px;margin-top:16px"><button class="btn b-gold" onclick="S.plan='premium';save();closeM();toast('Teste grátis de 7 dias ativado');render()">Testar grátis por 7 dias</button><button class="btn b-ghost" onclick="closeM();go('#/planos')">Ver planos</button></div>`)}
+function speak(t){if(!('speechSynthesis' in window))return toast('Seu navegador não suporta leitura em voz');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/\n/g,' '));u.lang='pt-BR';u.rate=.92;const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith('pt'));if(v)u.voice=v;speechSynthesis.speak(u)}
+function share(t,tx){const s=`${t}\n\n${tx}\n\n— Fé Católica IA`;if(navigator.share)navigator.share({title:t,text:s}).catch(()=>{});else{navigator.clipboard.writeText(s);toast('Texto copiado para compartilhar')}}
+function favBtn(id){const f=S.fav.includes(id);return `<button class="btn b-ghost b-sm" onclick="togFav('${id}',this)">${ICO.heart(f)} ${f?'Favorita':'Favoritar'}</button>`}
+function togFav(id,el){const k=S.fav.indexOf(id);if(k<0){S.fav.push(id);toast('Adicionada aos favoritos')}else S.fav.splice(k,1);save();if(el)el.outerHTML=favBtn(id)}
+const saintToday=()=>SAINTS.find(s=>s.md===ymd(today).slice(5))||SAINTS[0];
+
+/* =========================================================
+   TELAS
+   ========================================================= */
+function vHome(){
+ const h=today.getHours(),sd=saintToday(),mt=DAYMYST[today.getDay()],m=MYST[mt];
+ const cont=[];
+ if(S.terco&&S.terco.i>0)cont.push(card({t:'Continuar o terço',d:`${TL[S.terco.k].t}: passo ${S.terco.i+1} de ${buildSteps(S.terco.k).length}`,img:TL[S.terco.k].img,prog:S.terco.i/buildSteps(S.terco.k).length*100,on:`go('#/terco/${S.terco.k}')`,btn:'Continuar'}));
+ Object.entries(S.nov).forEach(([id,n])=>{const nv=NOVENAS.find(x=>x.id===id);if(nv&&n.done.length<9)cont.push(card({t:nv.t,d:`Dia ${n.done.length+1} de 9`,img:nv.img,prog:n.done.length/9*100,on:`go('#/novena/${id}')`,btn:'Continuar'}))});
+ Object.entries(S.chal).forEach(([id,c])=>{const d=DESAFIOS.find(x=>x.id===id);if(d)cont.push(card({t:d.t,d:`${c.length} de ${d.n} dias`,img:d.img,prog:c.length/d.n*100,on:`go('#/desafio/${id}')`,btn:'Continuar'}))});
+ if(!cont.length)cont.push(card({t:`Terço de hoje: ${m.n}`,d:'Comece agora a sua caminhada de fé de hoje.',img:m.img,on:`go('#/terco/mariano')`,btn:'Começar'}),card({t:NOVENAS[0].t,d:'Comece uma novena e acompanhe dia a dia.',img:NOVENAS[0].img,on:`go('#/novena/aparecida')`,btn:'Começar'}));
+ const devNov=NOVENAS.filter(n=>S.devs.includes(n.id));const novs=[...devNov,...NOVENAS.filter(n=>!devNov.includes(n))];
+ const ora=[h<12?'oferecimento':h<18?'gratidao1':'dormir1','familia1','filhos1','dificil1','anjo','miguel','paz1'].map(id=>ORACOES.find(o=>o.id===id));
+ return `<section class="hero"><div class="ph"></div><div class="wrap"><div class="c">
+  <span class="greet">${h<12?'Bom dia':h<18?'Boa tarde':'Boa noite'}, ${esc(first(S.user.name))} · ${fdate(today)}</span>
+  <h1>Sua fé mais perto de você, <em>todos os dias.</em></h1>
+  <p>Um espaço especial para rezar, aprender, agradecer e fortalecer sua caminhada com Deus.</p>
+  <div class="btns"><button class="btn b-gold" onclick="go('#/terco/mariano')">Começar a rezar</button><button class="btn b-line" onclick="go('#/explorar')">Explorar a plataforma</button></div>
+ </div></div></section>
+ <div class="wrap rows">
+  ${row('Continue sua caminhada de fé','',cont.join(''))}
+  ${row('Orações para hoje','Escolhidas para este momento do dia',ora.map(o=>card({t:o.t,d:o.tx.split('\n')[0],img:CATS.find(c=>c.id===o.c).img,on:`go('#/oracao/${o.id}')`,btn:'Rezar'})).join(''),'#/oracoes')}
+  ${row('Novenas e devoções',S.devs.length?'Começando pela sua devoção':'',novs.map(n=>card({t:n.t,d:'9 dias de oração com acompanhamento',img:n.img,tag:S.nov[n.id]?`Dia ${S.nov[n.id].done.length}/9`:null,on:`go('#/novena/${n.id}')`})).join(''),'#/novenas')}
+  ${row('Santo do dia','',card({cls:'wide',t:sd.n,d:`${sd.d} · ${sd.h}`,img:sd.img,tag:'Hoje',on:`go('#/santo/${sd.id}')`,btn:'Conhecer a história'})+SAINTS.filter(s=>s!==sd).slice(0,6).map(s=>card({t:s.n,d:s.d,img:s.img,on:`go('#/santo/${s.id}')`})).join(''),'#/santos')}
+  ${row('Terços e rosários',`Hoje: ${m.n}`,TERCOS.map(t=>card({t:t.t,d:t.d,img:t.img,tag:t.soon?'Em breve':(t.id===mt?'Hoje':null),on:t.soon?`toast('Disponível em breve')`:`go('#/terco/${t.id}')`,btn:'Rezar'})).join(''),'#/terco')}
+  ${row('Palavra de Deus','',[card({t:'Bíblia Católica',d:'Os 73 livros, com favoritos e anotações',img:'biblia',on:"go('#/biblia')"}),card({t:'30 dias de leitura bíblica',d:'Um plano simples para criar o hábito',img:'pentecostes',on:"go('#/desafio/d30')"}),card({t:'Evangelho do dia',d:'Lc 12,49-53 · com reflexão',img:'jesus',on:"go('#/liturgia')"}),card({t:'Salmos para rezar',d:'O livro de oração de Jesus',img:'oracao',on:"go('#/biblia/Salmos')"})].join(''),'#/biblia')}
+  ${row('Liturgia diária','',card({cls:'wide',t:'Liturgia de hoje',d:'Quinta-feira da 29ª Semana do Tempo Comum · cor verde',img:'igreja',tag:'Hoje',on:"go('#/liturgia')",btn:'Ler a liturgia'})+card({t:'Calendário católico',d:'Solenidades, festas e santos do mês',img:'ceu',on:"go('#/calendario')"}))}
+  ${row('Milagres e testemunhos','Fatos reconhecidos na história da Igreja',MILAGRES.map(x=>card({t:x.t,d:x.d,img:x.img,on:`go('#/santo/${x.s}')`,btn:'Ler'})).join(''))}
+  ${row('Inteligência Artificial Católica','Pergunte ao Amigo da Fé IA',Object.keys(QA).map(q=>`<div class="card ask" role="button" tabindex="0" onclick="askIA('${q.replace(/'/g,"\\'")}')"><span class="kick">Amigo da Fé IA</span><div class="q">${q}</div><span class="go" style="font-weight:800;color:var(--gold)">Perguntar ${ICO.arrow}</span></div>`).join(''),'#/ia')}
+  ${row('Minha jornada espiritual','',[card({t:'Minhas intenções',d:'Registre e acompanhe seus pedidos',img:'velas'.replace('velas','igreja'),on:"go('#/intencoes')"}),card({t:'Diário espiritual',d:'Orações, agradecimentos e reflexões',img:'oracao',tag:'Premium',on:"go('#/diario')"}),card({t:'Desafios de fé',d:'Jornadas de 7 a 40 dias',img:'maria',on:"go('#/desafios')"}),card({t:'Preparação para a confissão',d:'Exame de consciência e ato de contrição',img:'jesus',on:"go('#/confissao')"}),card({t:'Músicas e meditações',d:'Cantos, orações narradas e meditações',img:'nascimento',tag:'Premium',on:"go('#/musicas')"})].join(''))}
+  <div class="foot">Imagens: obras em domínio público e licenças livres via Wikimedia Commons. Protótipo navegável · Fé Católica IA.</div>
+ </div>`}
+
+/* ---------- EXPLORAR ---------- */
+function vExplorar(){const T=[['Terço digital','terco','rosario'],['Orações','oracoes','oracao'],['Novenas','novenas','aparecida'],['Santo do dia','santos','jp2'],['Liturgia diária','liturgia','igreja'],['Amigo da Fé IA','ia','pentecostes'],['Bíblia Católica','biblia','biblia'],['Diário espiritual','diario','oracao'],['Minhas intenções','intencoes','sagrado'],['Desafios de fé','desafios','maria'],['Calendário católico','calendario','ceu'],['Confissão','confissao','jesus'],['Músicas e meditações','musicas','nascimento'],['Planos e assinatura','planos','imaculada'],['Meu perfil','perfil','fatima']];
+ return `<div class="wrap page"><div class="ph-h"><span class="kick">Explorar</span><h1>Tudo para a sua vida de oração</h1><p>Escolha uma ferramenta para começar.</p></div><div class="grid">${T.map(([t,r,i])=>card({t,d:'',img:i,on:`go('#/${r}')`})).join('')}</div></div>`}
+
+/* ---------- TERÇO ---------- */
+const TL={mariano:{t:'Terço Mariano',img:'rosario'},gozosos:{t:'Mistérios Gozosos',img:'anunciacao'},luminosos:{t:'Mistérios Luminosos',img:'ceia'},dolorosos:{t:'Mistérios Dolorosos',img:'jesus'},gloriosos:{t:'Mistérios Gloriosos',img:'pentecostes'},misericordia:{t:'Terço da Divina Misericórdia',img:'misericordia'}};
+function buildSteps(k){
+ const st=[];const ord=['1º','2º','3º','4º','5º'];
+ if(k==='misericordia'){
+  st.push({b:'cross',t:'Sinal da Cruz',x:'Em nome do Pai, do Filho e do Espírito Santo. Amém.\n\nJesus, eu confio em Vós.'});
+  st.push({b:'p0',t:'Pai Nosso',x:P.pai});st.push({b:'p1',t:'Ave Maria',x:P.ave});st.push({b:'p2',t:'Creio',x:P.credo});
+  for(let d=0;d<5;d++){st.push({b:'L'+d*11,t:'Eterno Pai',m:`${ord[d]} dezena`,x:P.eterno});for(let i=1;i<=10;i++)st.push({b:'L'+(d*11+i),t:`Pela sua dolorosa Paixão · ${i} de 10`,m:`${ord[d]} dezena`,x:P.dolorosa,am:i})}
+  st.push({b:'medal',t:'Deus Santo (3 vezes)',x:P.santo+'\n\n'+P.santo+'\n\n'+P.santo});return st}
+ const mk=k==='mariano'?DAYMYST[today.getDay()]:k;const M=MYST[mk];
+ st.push({b:'cross',t:'Sinal da Cruz e Creio',x:'Pelo sinal da Santa Cruz, livrai-nos, Deus, Nosso Senhor, dos nossos inimigos. Em nome do Pai, do Filho e do Espírito Santo. Amém.\n\n'+P.credo});
+ st.push({b:'p0',t:'Pai Nosso',x:P.pai});
+ ['pela fé','pela esperança','pela caridade'].forEach((w,i)=>st.push({b:'p'+(i+1),t:`Ave Maria ${w}`,x:P.ave,am:i+1,of:3}));
+ st.push({b:'medal',t:'Glória ao Pai',x:P.gloria});
+ for(let d=0;d<5;d++){const mm=`${ord[d]} Mistério ${M.n.split(' ')[1]}: ${M.l[d]}`;
+  st.push({b:'L'+d*11,t:'Anúncio do mistério e Pai Nosso',m:mm,x:`Contemplamos no ${ord[d]} mistério: ${M.l[d]}.\n\n`+P.pai});
+  for(let i=1;i<=10;i++)st.push({b:'L'+(d*11+i),t:`Ave Maria · ${i} de 10`,m:mm,x:P.ave,am:i});
+  st.push({b:'L'+(d*11+10),t:'Glória e Ó meu Jesus',m:mm,x:P.gloria+'\n\n'+P.fatima})}
+ st.push({b:'medal',t:'Salve Rainha',x:P.salve});return st}
+function vTercoList(){const mt=DAYMYST[today.getDay()];return `<div class="wrap page"><div class="ph-h"><span class="kick">Terço digital</span><h1>Reze o terço com calma</h1><p>Toque nas contas ou use os botões para avançar. Seu progresso fica salvo e você pode pausar quando quiser.</p></div>
+ <div class="grid">${TERCOS.map(t=>card({t:t.t,d:t.d,img:t.img,tag:t.soon?'Em breve':(t.id===mt||t.id==='mariano'&&0?'Hoje':null),on:t.soon?`toast('Disponível em breve')`:`go('#/terco/${t.id}')`,btn:'Rezar'})).join('')}</div>
+ <div class="panel-c" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b>Terços rezados</b><div class="mut" style="font-size:14px">Seu histórico pessoal</div></div><div class="serif" style="font-size:40px;font-weight:700;color:var(--gold)">${S.tercos}</div></div></div>`}
+function rosSVG(){const beads=[];const cx=200,cy=175,R=145;
+ for(let k=0;k<55;k++){const a=(102+k*(336/54))*Math.PI/180;const big=k%11===0;beads.push(`<circle class="bd" data-b="L${k}" cx="${(cx+R*Math.cos(a)).toFixed(1)}" cy="${(cy+R*Math.sin(a)).toFixed(1)}" r="${big?9:6}"/>`)}
+ const pend=[['medal',200,332,10],['p3',200,362,6],['p2',200,382,6],['p1',200,402,6],['p0',200,428,9]];
+ pend.forEach(([b,x,y,r])=>beads.push(b==='medal'?`<path class="bd" data-b="medal" d="M200 320 l12 12 -12 12 -12 -12z"/>`:`<circle class="bd" data-b="${b}" cx="${x}" cy="${y}" r="${r}"/>`));
+ beads.push(`<g class="bd" data-b="cross"><rect x="196" y="446" width="8" height="40" rx="2"/><rect x="186" y="456" width="28" height="8" rx="2"/></g>`);
+ return `<svg class="ros" viewBox="0 0 400 495" aria-label="Rosário interativo"><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="var(--line)" stroke-width="1.5"/><line x1="200" y1="${cy+R}" x2="200" y2="450" stroke="var(--line)" stroke-width="1.5"/>${beads.join('')}</svg>`}
+let TS=null;
+function vTerco(k){
+ if(!TL[k])return vTercoList();
+ const steps=buildSteps(k);let i=(S.terco&&S.terco.k===k)?S.terco.i:0;TS={k,steps,i};
+ const mk=k==='mariano'?DAYMYST[today.getDay()]:k;
+ return `<div class="wrap page">${backL('#/terco','Terços')}
+ <div class="ph-h" style="margin-bottom:10px"><span class="kick">${TL[k].t}${k==='mariano'?' · '+MYST[mk].n:''}</span></div>
+ <div class="terco"><div>${rosSVG()}</div>
+ <div class="tc-box"><div class="tc-mys" id="tcM"></div><h2 id="tcT"></h2>
+  <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--mut)"><span id="tcC"></span><span id="tcP"></span></div>
+  <div class="pbar"><b id="tcB"></b></div>
+  <p class="tc-text" id="tcX"></p>
+  <div class="tc-ctr"><button class="btn b-ghost" onclick="tcGo(-1)">Anterior</button><button class="btn b-gold" id="tcN" onclick="tcGo(1)">Próxima</button></div>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn b-ghost b-sm" id="tcV" onclick="S.voice=!S.voice;save();tcUpd()">${ICO.sound} Áudio</button><button class="btn b-ghost b-sm" onclick="speechSynthesis.cancel();toast('Terço pausado. Continue quando quiser.');go('#/')">Pausar e sair</button><button class="btn b-ghost b-sm" onclick="tcSet(0)">Recomeçar</button></div>
+ </div></div></div>`}
+function tcBind(){document.querySelectorAll('.ros .bd').forEach(el=>el.addEventListener('click',()=>{const b=el.dataset.b;const idx=TS.steps.findIndex(s=>s.b===b);if(idx>=0)tcSet(idx)}));tcUpd()}
+function tcSet(i){TS.i=Math.max(0,Math.min(TS.steps.length-1,i));S.terco={k:TS.k,i:TS.i};save();tcUpd()}
+function tcGo(d){if(d>0&&TS.i===TS.steps.length-1){S.tercos++;S.terco=null;log(`Rezou o ${TL[TS.k].t}`);save();speechSynthesis.cancel();openM(`<span class="kick">Amém</span><h2>Terço concluído</h2><p class="mut">Que Nossa Senhora interceda por você e pelas suas intenções. Você já rezou ${S.tercos} terço${S.tercos>1?'s':''} aqui.</p><button class="btn b-gold b-block" onclick="closeM();go('#/')">Voltar ao início</button>`);return}tcSet(TS.i+d)}
+function tcUpd(){const s=TS.steps[TS.i];const cur=s.b;const bi=TS.steps.slice(0,TS.i).map(x=>x.b);
+ document.querySelectorAll('.ros .bd').forEach(el=>{const b=el.dataset.b;const isCur=b===cur,done=bi.includes(b)&&!isCur;const f=isCur?'#D4AF37':done?'color-mix(in srgb,#D4AF37 55%,var(--card))':'var(--card2)';el.style.fill=f;el.style.stroke=isCur?'#fff':'var(--line)';el.style.strokeWidth=isCur?2:1;if(el.tagName==='g')el.querySelectorAll('rect').forEach(r=>{r.style.fill=f})});
+ $('#tcM').textContent=s.m||'';$('#tcT').textContent=s.t;$('#tcX').textContent=s.x;
+ const am=TS.steps.slice(0,TS.i+1).filter(x=>x.am).length;const tot=TS.steps.filter(x=>x.am).length;
+ $('#tcC').textContent=`Ave-Marias: ${am} de ${tot}`.replace('Ave-Marias',TS.k==='misericordia'?'Invocações':'Ave-Marias');$('#tcP').textContent=`${Math.round((TS.i+1)/TS.steps.length*100)}%`;$('#tcB').style.width=((TS.i+1)/TS.steps.length*100)+'%';
+ $('#tcN').textContent=TS.i===TS.steps.length-1?'Concluir terço':'Próxima';
+ $('#tcV').style.borderColor=S.voice?'var(--gold)':'';$('#tcV').style.color=S.voice?'var(--gold)':'';
+ if(S.voice)speak(s.t+'. '+s.x)}
+
+/* ---------- ORAÇÕES ---------- */
+function vOracoes(cat){const c=cat||'todas';const L=ORACOES.filter(o=>c==='todas'||o.c===c||(c==='fav'&&S.fav.includes(o.id)));
+ return `<div class="wrap page"><div class="ph-h"><span class="kick">Orações para cada momento</span><h1>Biblioteca de orações</h1><p>Favorite, compartilhe e monte a sua rotina de oração.</p></div>
+ <div class="chips" style="margin-bottom:18px"><button class="chip ${c==='todas'?'on':''}" onclick="go('#/oracoes')">Todas</button><button class="chip ${c==='fav'?'on':''}" onclick="go('#/oracoes/fav')">♥ Favoritas</button>${CATS.map(x=>`<button class="chip ${c===x.id?'on':''}" onclick="go('#/oracoes/${x.id}')">${x.t}</button>`).join('')}</div>
+ <div class="split"><div class="list">${L.length?L.map(o=>`<button class="li" onclick="go('#/oracao/${o.id}')"><div class="th" style="background-image:url(${IMG(CATS.find(x=>x.id===o.c).img)})"></div><div><b>${o.t}</b><small>${CATS.find(x=>x.id===o.c).t}${o.trad?' · tradicional':''}</small></div><span class="end">${S.fav.includes(o.id)?ICO.heart(1):''}${ICO.r}</span></button>`).join(''):'<p class="mut">Nenhuma oração favorita ainda. Toque em “Favoritar” em qualquer oração.</p>'}</div>
+ <aside class="panel-c"><span class="kick">Minha rotina</span><h3 class="serif" style="font-size:24px;margin:6px 0 12px">Rotina de oração</h3>
+  <div class="list"><button class="li" onclick="go('#/oracao/${S.rot.manha}')"><div><b>Manhã</b><small>${ORACOES.find(o=>o.id===S.rot.manha).t}</small></div><span class="end">${ICO.r}</span></button><button class="li" onclick="go('#/oracao/${S.rot.noite}')"><div><b>Noite</b><small>${ORACOES.find(o=>o.id===S.rot.noite).t}</small></div><span class="end">${ICO.r}</span></button><button class="li" onclick="go('#/terco/mariano')"><div><b>Terço do dia</b><small>${MYST[DAYMYST[today.getDay()]].n}</small></div><span class="end">${ICO.r}</span></button></div>
+  <p class="mut" style="font-size:13px;margin:12px 0 0">Para mudar, abra uma oração e toque em “Usar na rotina”.</p></aside></div></div>`}
+function vOracao(id){const o=ORACOES.find(x=>x.id===id);if(!o)return vOracoes();const c=CATS.find(x=>x.id===o.c);log(`Rezou: ${o.t}`);
+ return `<div class="narrow page">${backL('#/oracoes','Orações')}<div class="cover" style="background-image:url(${IMG(c.img)})"></div><span class="kick">${c.t}${o.trad?' · Oração tradicional':''}</span><h1 class="serif" style="font-size:clamp(32px,4vw,44px);line-height:1.05;margin:6px 0 18px">${o.t}</h1>
+ <p class="prayer-text">${esc(o.tx)}</p>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:24px">${favBtn(o.id)}<button class="btn b-ghost b-sm" onclick="speak(ORACOES.find(x=>x.id==='${o.id}').tx)">${ICO.sound} Ouvir</button><button class="btn b-ghost b-sm" onclick="share('${esc(o.t)}',ORACOES.find(x=>x.id==='${o.id}').tx)">${ICO.share} Compartilhar</button><button class="btn b-ghost b-sm" onclick="setRot('${o.id}')">Usar na rotina</button></div></div>`}
+function setRot(id){openM(`<span class="kick">Minha rotina</span><h2>Usar esta oração em qual momento?</h2><div style="display:flex;flex-direction:column;gap:10px;margin-top:14px"><button class="btn b-gold" onclick="S.rot.manha='${id}';save();closeM();toast('Definida como oração da manhã')">De manhã</button><button class="btn b-ghost" onclick="S.rot.noite='${id}';save();closeM();toast('Definida como oração da noite')">À noite</button></div>`)}
+
+/* ---------- NOVENAS ---------- */
+function vNovenas(){return `<div class="wrap page"><div class="ph-h"><span class="kick">Novenas católicas</span><h1>Nove dias de oração</h1><p>Escolha uma novena, coloque a sua intenção e acompanhe dia a dia. O progresso fica salvo.</p></div>
+ <div class="grid">${NOVENAS.map(n=>card({t:n.t,d:S.nov[n.id]?`Em andamento: dia ${Math.min(9,S.nov[n.id].done.length+1)} de 9`:'9 dias de oração',img:n.img,tag:S.nov[n.id]?(S.nov[n.id].done.length>=9?'Concluída':'Em andamento'):null,prog:S.nov[n.id]?S.nov[n.id].done.length/9*100:null,on:`go('#/novena/${n.id}')`})).join('')}</div></div>`}
+function novPrayer(n,d){return `${n.inv}, nesta novena eu me coloco diante de Deus com fé e confiança.\n\nNo ${d+1}º dia, peço a graça de crescer em ${NTEMAS[d].toLowerCase().replace(/^a |^o /,'')}: ${['entrego nas mãos de Deus a minha intenção','que a minha fé não vacile diante das dificuldades','que eu nunca perca a esperança','que eu saiba amar como Jesus amou','que a minha família seja guardada no amor de Deus','que eu saiba perdoar e ser perdoado','que eu tenha um coração humilde e simples','que eu persevere na oração até o fim','que eu saiba agradecer por todas as graças recebidas'][d]}.\n\nIntercedei por mim e alcançai-me, se for da vontade de Deus, a graça que vos peço.\n\nReze: 1 Pai Nosso, 1 Ave Maria e 1 Glória ao Pai.\n\nAmém.`}
+function vNovena(id){const n=NOVENAS.find(x=>x.id===id);const s=SAINTS.find(x=>x.id===n.s);const st=S.nov[id];const d=st?Math.min(8,st.done.length):0;
+ return `<div class="wrap page">${backL('#/novenas','Novenas')}<div class="split"><div>
+ <div class="cover" style="background-image:url(${IMG(n.img)})"></div><span class="kick">Novena · 9 dias</span><h1 class="serif" style="font-size:clamp(32px,4vw,46px);line-height:1.05;margin:6px 0 14px">${n.t}</h1>
+ <details class="acc" ${st?'':'open'}><summary>Apresentação</summary><div class="in-acc">Durante nove dias seguidos, reze a oração do dia com a sua intenção no coração. A novena lembra os nove dias em que os Apóstolos e Maria esperaram, em oração, a vinda do Espírito Santo (At 1,14).</div></details>
+ <details class="acc"><summary>História da devoção</summary><div class="in-acc">${s?s.h:''}</div></details>
+ ${st?`<h2 class="section">Dia ${d+1}: ${NTEMAS[d]}</h2><p class="prayer-text" style="font-size:21px">${esc(novPrayer(n,d))}</p>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px"><button class="btn b-gold" onclick="novDone('${id}',${d})" ${st.done.includes(d)?'disabled style="opacity:.6"':''}>${st.done.includes(d)?'Dia concluído ✓':'Concluir o dia '+(d+1)}</button><button class="btn b-ghost b-sm" onclick="speak(novPrayer(NOVENAS.find(x=>x.id==='${id}'),${d}))">${ICO.sound} Ouvir</button></div>`:''}
+ </div><aside>
+ <div class="panel-c"><span class="kick">Minha intenção</span><textarea class="in" id="novInt" style="margin-top:10px" placeholder="Escreva aqui a sua intenção (fica só com você)">${esc(st?.int||'')}</textarea>
+ ${st?`<button class="btn b-ghost b-sm" onclick="S.nov['${id}'].int=$('#novInt').value;save();toast('Intenção salva')">Salvar intenção</button>`:`<button class="btn b-gold b-block" onclick="novStart('${id}')">Começar a novena</button>`}</div>
+ ${st?`<div class="panel-c" style="margin-top:14px"><span class="kick">Calendário</span><div class="cal9">${[...Array(9)].map((_,i)=>`<button class="${st.done.includes(i)?'done':''} ${i===d?'cur':''}" onclick="S.nov['${id}'].view=${i};render()" aria-label="Dia ${i+1}">${i+1}</button>`).join('')}</div><div class="mut" style="font-size:13.5px">${st.done.length} de 9 dias concluídos · iniciada em ${new Date(st.start).toLocaleDateString('pt-BR')}</div>
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px"><div><b style="font-size:14.5px">Lembrete diário</b><div class="mut" style="font-size:13px">Às ${st.hora||'20:00'}</div></div><button class="toggle ${st.rem?'on':''}" onclick="S.nov['${id}'].rem=!S.nov['${id}'].rem;save();this.classList.toggle('on');toast(S.nov['${id}'].rem?'Lembrete ativado':'Lembrete desativado')" aria-label="Lembrete"></button></div></div>`:''}
+ </aside></div></div>`}
+function novStart(id){premium(()=>{S.nov[id]={start:Date.now(),done:[],int:$('#novInt').value,rem:true};log(`Começou a ${NOVENAS.find(x=>x.id===id).t}`);save();toast('Novena iniciada. Que Deus abençoe sua intenção!');render()},'Acompanhar novenas')}
+function novDone(id,d){const st=S.nov[id];if(!st.done.includes(d))st.done.push(d);save();if(st.done.length>=9){log(`Concluiu a ${NOVENAS.find(x=>x.id===id).t}`);openM(`<span class="kick">Novena concluída</span><h2>Você perseverou por nove dias!</h2><p class="mut">Entregue com confiança a sua intenção nas mãos de Deus. Ele ouve cada oração, mesmo quando a resposta é diferente do que esperamos. Continue rezando e agradeça sempre.</p><button class="btn b-gold b-block" onclick="closeM();go('#/intencoes')">Registrar minha intenção</button>`)}else toast(`Dia ${d+1} concluído. Até amanhã!`);render()}
+
+/* ---------- SANTOS ---------- */
+function vSanto(id){const s=SAINTS.find(x=>x.id===id)||saintToday();const isToday=s===saintToday();
+ return `<div class="wrap page">${backL('#/santos','Calendário dos santos')}<div class="split"><div>
+ <span class="kick">${isToday?'Santo do dia · ':''}${s.d}</span><h1 class="serif" style="font-size:clamp(34px,4.4vw,52px);line-height:1.02;margin:6px 0 18px">${s.n}</h1>
+ <div class="cover" style="background-image:url(${IMG(s.img)});aspect-ratio:16/10"></div>
+ <h2 class="section" style="margin-top:6px">História de vida</h2><p style="font-size:17px">${s.h}</p>
+ <h2 class="section">Principais ensinamentos</h2><ul style="font-size:16.5px;padding-left:20px">${s.e.map(x=>`<li style="margin-bottom:6px">${x}</li>`).join('')}</ul>
+ <h2 class="section">Curiosidades</h2><ul style="font-size:16px;padding-left:20px">${s.c.map(x=>`<li style="margin-bottom:6px">${x.startsWith('Tradição')?`<span class="tag t-gold" style="margin-right:6px">Tradição devocional</span>${x.replace(/^Tradição( devocional)?: ?/,'')}`:x}</li>`).join('')}</ul>
+ <p class="note">Os fatos acima são historicamente documentados. Relatos marcados como “Tradição devocional” fazem parte da piedade popular.</p>
+ </div><aside class="panel-c"><span class="kick">Oração</span><p class="prayer-text" style="font-size:21px;margin-top:10px">${s.o}</p><div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">${favBtn('s_'+s.id)}<button class="btn b-ghost b-sm" onclick="speak(SAINTS.find(x=>x.id==='${s.id}').o)">${ICO.sound} Ouvir</button></div></aside></div></div>`}
+function vSantos(q=''){const L=SAINTS.filter(s=>s.n.toLowerCase().includes(q.toLowerCase()));return `<div class="wrap page"><div class="ph-h"><span class="kick">Santos</span><h1>Calendário dos santos</h1><p>Hoje: <a class="link" href="#/santo/${saintToday().id}">${saintToday().n}</a></p></div>
+ <input class="in" id="sq" placeholder="Pesquisar santo por nome…" value="${esc(q)}" oninput="const v=this.value;$('#view').innerHTML=vSantos(v);const i=$('#sq');i.focus();i.setSelectionRange(v.length,v.length)" style="max-width:460px">
+ <div class="grid" style="margin-top:8px">${L.map(s=>card({t:s.n,d:s.d,img:s.img,on:`go('#/santo/${s.id}')`})).join('')||'<p class="mut">Nenhum santo encontrado.</p>'}</div></div>`}
+
+/* ---------- LITURGIA ---------- */
+function vLiturgia(){return `<div class="narrow page"><span class="kick">Liturgia diária · ${fdate(new Date(2026,9,22))}</span><h1 class="serif" style="font-size:clamp(32px,4vw,44px);line-height:1.05;margin:6px 0 12px">Quinta-feira da 29ª Semana do Tempo Comum</h1>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px"><span class="tag t-gold">Tempo Comum</span><span class="tag" style="background:#2E7D4F;color:#fff">● Cor litúrgica: verde</span><span class="tag t-gold">Ano par</span></div>
+ ${[['Primeira leitura','Efésios 3,14-21','Paulo dobra os joelhos diante do Pai e pede que os cristãos sejam fortalecidos pelo Espírito e conheçam o amor de Cristo, que ultrapassa todo conhecimento.'],['Salmo responsorial','Salmo 32(33)','Um hino de louvor à fidelidade e à bondade de Deus, que olha por aqueles que esperam no seu amor.'],['Evangelho','Lucas 12,49-53','Jesus diz que veio trazer fogo à terra e que o seu Evangelho exige uma escolha, mesmo quando provoca divisão.']].map(([t,r,s])=>`<div class="panel-c" style="margin-bottom:12px"><span class="kick">${t}</span><h3 class="serif" style="font-size:26px;margin:4px 0 6px">${r}</h3><p class="mut" style="margin:0">${s}</p></div>`).join('')}
+ <p class="note">Na versão final, o texto integral das leituras vem de uma fonte litúrgica licenciada (ex.: CNBB) e é atualizado todos os dias conforme o calendário. Aqui mostramos as referências e um resumo.</p>
+ <h2 class="section">Reflexão</h2><p style="font-size:17px">O “fogo” de que Jesus fala é o amor de Deus que transforma. Seguir Jesus nem sempre é confortável: às vezes pede escolhas que os outros não entendem. Mas é esse mesmo fogo que, como pede São Paulo na primeira leitura, nos enraíza no amor de Cristo.</p>
+ <h2 class="section">Oração final</h2><p class="prayer-text" style="font-size:21px">Senhor Jesus, acendei em mim o fogo do vosso amor. Que eu tenha coragem de escolher sempre o Evangelho, com mansidão e firmeza. Amém.</p>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><button class="btn b-gold" onclick="askIA('Explique o Evangelho de hoje (Lc 12,49-53)')">Refletir com IA</button><button class="btn b-ghost" onclick="go('#/calendario')">Calendário litúrgico</button></div></div>`}
+
+/* ---------- IA ---------- */
+let CHAT=[];
+function vIA(){return `<div class="narrow page"><span class="kick">Assistente católico</span><h1 class="serif" style="font-size:clamp(32px,4vw,44px);line-height:1.05;margin:6px 0 8px">Amigo da Fé IA</h1>
+ <p class="mut" style="margin:0 0 6px">Pergunte sobre a Bíblia, o Catecismo, os sacramentos, os santos, Nossa Senhora e a vida espiritual.</p>
+ <p class="note">O Amigo da Fé IA responde com base no Catecismo e em documentos da Igreja, e sempre indica as fontes. Ele não substitui a orientação de um sacerdote, a confissão sacramental nem o acompanhamento pastoral.</p>
+ <div class="chat" id="chat">${CHAT.length?CHAT.map(m=>bubble(m)).join(''):`<div class="msg ai">A paz de Cristo, ${esc(first(S.user.name))}! Sobre o que você quer conversar hoje?</div>`}</div>
+ ${CHAT.length?'':`<div class="chips" id="sugg" style="margin:14px 0">${Object.keys(QA).map(q=>`<button class="chip" onclick="askIA(this.textContent)">${q}</button>`).join('')}</div>`}
+ <form class="composer" onsubmit="event.preventDefault();const v=$('#q').value.trim();if(v){askIA(v);$('#q').value=''}"><input class="in" id="q" placeholder="Escreva sua pergunta…" autocomplete="off"><button class="btn b-gold" type="submit">Enviar</button></form>
+ <p class="mut" style="font-size:12.5px;margin:4px 0 0">Plano gratuito: 5 perguntas por dia. Premium: limites ampliados.</p></div>`}
+const bubble=m=>m.me?`<div class="msg me">${esc(m.t)}</div>`:`<div class="msg ai">${esc(m.t)}${m.s?`<span class="src">Fonte: ${esc(m.s)}</span>`:''}</div>`;
+function askIA(q){if(location.hash!=='#/ia'){CHAT.push({me:1,t:q});go('#/ia');setTimeout(()=>answer(q),50);return}CHAT.push({me:1,t:q});$('#chat').insertAdjacentHTML('beforeend',bubble({me:1,t:q}));const sg=$('#sugg');if(sg)sg.remove();answer(q)}
+function answer(q){const chat=$('#chat');if(!chat)return;chat.insertAdjacentHTML('beforeend','<div class="msg ai" id="typing"><span class="dots"><span></span><span></span><span></span></span></div>');scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ let r=QA[q];
+ if(!r&&/lc 12|evangelho de hoje/i.test(q))r={a:`No Evangelho de hoje (Lc 12,49-53), Jesus diz: “Eu vim lançar fogo sobre a terra”.\n\nEsse fogo é o amor de Deus e a força do Espírito Santo, que purifica e transforma. Jesus também fala de divisão: não porque Ele queira brigas, mas porque segui-Lo exige uma decisão, e nem todos a aceitam.\n\nPara rezar hoje: em que área da minha vida eu preciso deixar o fogo do amor de Deus entrar?`,s:'Lc 12,49-53; Catecismo da Igreja Católica, §696 (o fogo como símbolo do Espírito Santo)'};
+ if(!r&&/pecad|confess/i.test(q)&&/meu|minha|eu /i.test(q))r={a:`Para proteger a sua privacidade, eu não peço nem registro pecados pessoais. Esse momento é só entre você e o sacerdote, no sacramento da Confissão.\n\nPosso ajudar você a se preparar: no app há um guia com exame de consciência, os Dez Mandamentos e o ato de contrição.`,s:'Catecismo da Igreja Católica, §1467 (sigilo sacramental)'};
+ if(!r)r={a:`Boa pergunta! Na versão final, eu respondo a qualquer pergunta sobre a fé católica usando o Catecismo, a Bíblia e documentos oficiais da Igreja, sempre indicando as fontes e sem inventar citações.\n\nNeste protótipo, experimente uma das perguntas sugeridas.`,s:null};
+ setTimeout(()=>{$('#typing')?.remove();CHAT.push({t:r.a,s:r.s});chat.insertAdjacentHTML('beforeend',bubble({t:r.a,s:r.s}));log('Conversou com o Amigo da Fé IA');scrollTo({top:document.body.scrollHeight,behavior:'smooth'})},900)}
+
+/* ---------- BÍBLIA ---------- */
+function vBiblia(book,ch){
+ if(book&&ch){const key=`${book} ${ch}`;const f=S.vfav.includes(key);return `<div class="narrow page">${backL('#/biblia/'+encodeURIComponent(book),book)}<span class="kick">Bíblia Católica</span><h1 class="serif" style="font-size:40px;margin:4px 0 14px">${book} ${ch}</h1>
+  <p class="note">Na versão final, aqui aparece o texto completo de uma tradução católica licenciada (por exemplo, Bíblia da CNBB ou Ave-Maria), com marcação de versículos e busca por palavras.</p>
+  <div class="panel-c" style="min-height:160px;color:var(--mut)">Texto de ${book}, capítulo ${ch}.</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0"><button class="btn b-ghost b-sm" onclick="const k='${key}';const i=S.vfav.indexOf(k);i<0?S.vfav.push(k):S.vfav.splice(i,1);save();render();toast(i<0?'Capítulo marcado':'Marcação removida')">${ICO.heart(f)} ${f?'Marcado':'Marcar capítulo'}</button><button class="btn b-ghost b-sm" onclick="askIA('Explique ${key}')">Refletir com IA</button></div>
+  <label class="lab">Minhas anotações</label><textarea class="in" oninput="S.notes['${key}']=this.value;save()" placeholder="Escreva o que Deus falou ao seu coração…">${esc(S.notes[key]||'')}</textarea>
+  <div style="display:flex;justify-content:space-between;margin-top:10px">${ch>1?`<a class="btn b-ghost b-sm" href="#/biblia/${encodeURIComponent(book)}/${ch-1}">‹ Capítulo ${ch-1}</a>`:'<span></span>'}${ch<CHAP[book]?`<a class="btn b-ghost b-sm" href="#/biblia/${encodeURIComponent(book)}/${+ch+1}">Capítulo ${+ch+1} ›</a>`:''}</div></div>`}
+ if(book)return `<div class="wrap page">${backL('#/biblia','Bíblia')}<h1 class="serif" style="font-size:40px;margin:4px 0 14px">${book}</h1><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px">${[...Array(CHAP[book])].map((_,i)=>`<a class="chip" style="display:grid;place-items:center;${S.vfav.includes(book+' '+(i+1))?'border-color:var(--gold);color:var(--gold)':''}" href="#/biblia/${encodeURIComponent(book)}/${i+1}">${i+1}</a>`).join('')}</div></div>`;
+ return `<div class="wrap page"><div class="ph-h"><span class="kick">Bíblia Católica</span><h1>Os 73 livros</h1><p>46 do Antigo Testamento e 27 do Novo Testamento.</p></div>
+ <input class="in" placeholder="Pesquisar por palavra (disponível na versão final)" disabled style="max-width:460px;opacity:.6">
+ ${S.vfav.length?`<h2 class="section">Marcados</h2><div class="chips">${S.vfav.map(k=>`<a class="chip" href="#/biblia/${encodeURIComponent(k.replace(/ \d+$/,''))}/${k.match(/\d+$/)[0]}">${k}</a>`).join('')}</div>`:''}
+ ${['AT','NT'].map(t=>`<h2 class="section">${t==='AT'?'Antigo Testamento':'Novo Testamento'}</h2><div class="chips">${BIBLE[t].map(b=>`<a class="chip" href="#/biblia/${encodeURIComponent(b)}">${b}</a>`).join('')}</div>`).join('')}</div>`}
+
+/* ---------- DIÁRIO ---------- */
+const DTYPES=['Oração','Agradecimento','Intenção','Reflexão','Aprendizado','Meta espiritual'];
+function vDiario(){if(S.plan==='free')return `<div class="narrow page"><span class="kick">Diário espiritual</span><h1 class="serif" style="font-size:44px;margin:6px 0 10px">Um espaço só seu</h1><p class="mut">Registre orações, agradecimentos, intenções e reflexões. Tudo fica privado.</p><span class="tag t-gold">${ICO.lock} Premium</span><div style="margin-top:18px"><button class="btn b-gold" onclick="premium(()=>render(),'O diário espiritual')">Desbloquear o diário</button></div></div>`;
+ return `<div class="narrow page"><span class="kick">Diário espiritual</span><h1 class="serif" style="font-size:44px;margin:6px 0 16px">Meu diário</h1>
+ <div class="panel-c"><div class="chips" id="dt" style="margin-bottom:12px">${DTYPES.map((t,i)=>`<button class="chip ${i===1?'on':''}" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">${t}</button>`).join('')}</div>
+ <textarea class="in" id="dTx" placeholder="Hoje eu quero agradecer por…"></textarea><button class="btn b-gold" onclick="addDiary()">Salvar registro</button>
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px"><div><b style="font-size:14.5px">Proteger com senha</b><div class="mut" style="font-size:13px">Pede um PIN para abrir o diário</div></div><button class="toggle ${S.pin?'on':''}" onclick="S.pin=!S.pin;save();this.classList.toggle('on')"></button></div></div>
+ <h2 class="section">Registros</h2><div class="list">${S.diary.length?S.diary.map(d=>`<div class="li" style="align-items:flex-start"><div><small>${new Date(d.d).toLocaleDateString('pt-BR',{day:'numeric',month:'long'})} · ${d.t}</small><b style="font-weight:600;margin-top:4px">${esc(d.x)}</b></div></div>`).join(''):'<p class="mut">Nenhum registro ainda.</p>'}</div></div>`}
+function addDiary(){const x=$('#dTx').value.trim();if(!x)return toast('Escreva algo antes de salvar');S.diary.unshift({t:document.querySelector('#dt .chip.on').textContent,x,d:Date.now()});log('Escreveu no diário espiritual');save();render();toast('Registro salvo')}
+
+/* ---------- INTENÇÕES ---------- */
+const ICATS=['Família','Saúde','Trabalho','Filhos','Fé','Falecidos','Outra'];
+function vIntencoes(){return `<div class="narrow page"><span class="kick">Minhas intenções</span><h1 class="serif" style="font-size:44px;margin:6px 0 8px">Pedidos de oração</h1><p class="mut" style="margin:0 0 16px">Suas intenções são privadas. Nada é compartilhado sem a sua autorização.</p>
+ <div class="panel-c"><textarea class="in" id="iTx" placeholder="Pela saúde da minha mãe…"></textarea>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><select class="in" id="iCat">${ICATS.map(c=>`<option>${c}</option>`).join('')}</select><select class="in" id="iVis"><option value="p">Privada</option><option value="c">Compartilhável</option></select></div>
+ <button class="btn b-gold" onclick="addInt()">Adicionar intenção</button></div>
+ <h2 class="section">Em oração</h2><div class="list">${S.ints.filter(i=>!i.ok).map(intRow).join('')||'<p class="mut">Nenhuma intenção ainda.</p>'}</div>
+ ${S.ints.some(i=>i.ok)?`<h2 class="section">Graças alcançadas</h2><div class="list">${S.ints.filter(i=>i.ok).map(intRow).join('')}</div>`:''}</div>`}
+const intRow=i=>`<div class="li" style="align-items:flex-start;flex-wrap:wrap"><div style="flex:1;min-width:200px"><small>${i.c} · ${i.v==='c'?'Compartilhável':'Privada'}</small><b style="font-weight:600;margin-top:2px">${esc(i.x)}</b>${i.ok&&i.g?`<div class="mut" style="font-size:14px;margin-top:6px">🙏 ${esc(i.g)}</div>`:''}</div>${i.ok?'<span class="tag t-gold">Atendida</span>':`<button class="btn b-ghost b-sm" onclick="okInt(${i.id})">Marcar como atendida</button>`}</div>`;
+function addInt(){const x=$('#iTx').value.trim();if(!x)return toast('Escreva a sua intenção');S.ints.unshift({id:Date.now(),x,c:$('#iCat').value,v:$('#iVis').value,ok:false});log('Registrou uma intenção');save();render();toast('Intenção registrada')}
+function okInt(id){openM(`<span class="kick">Graça alcançada</span><h2>Deus seja louvado!</h2><p class="mut">Quer registrar um agradecimento?</p><textarea class="in" id="gTx" placeholder="Obrigado, Senhor, porque…"></textarea><button class="btn b-gold b-block" onclick="const i=S.ints.find(x=>x.id===${id});i.ok=true;i.g=$('#gTx').value;save();closeM();render();toast('Agradecimento registrado')">Salvar</button>`)}
+
+/* ---------- CONFISSÃO ---------- */
+function vConfissao(){const M=['Amar a Deus sobre todas as coisas','Não tomar seu santo nome em vão','Guardar domingos e festas','Honrar pai e mãe','Não matar','Não pecar contra a castidade','Não furtar','Não levantar falso testemunho','Não desejar a mulher do próximo','Não cobiçar as coisas alheias'];
+ const Q=[['Coloquei Deus em primeiro lugar na minha vida?','Rezei com regularidade?'],['Usei o nome de Deus com respeito?'],['Participei da Missa aos domingos e dias santos?'],['Respeitei e ajudei meus pais e minha família?'],['Cuidei da minha saúde e respeitei a vida dos outros?','Guardei raiva ou desejei mal a alguém?'],['Vivi a pureza em pensamentos, palavras e ações?'],['Fui honesto com o que pertence aos outros?'],['Falei a verdade? Fiz fofoca ou julguei os outros?'],['Guardei o meu coração e o meu olhar?'],['Tive inveja ou apego excessivo às coisas?']];
+ return `<div class="narrow page"><span class="kick">Sacramento da Reconciliação</span><h1 class="serif" style="font-size:clamp(32px,4vw,44px);line-height:1.05;margin:6px 0 10px">Preparação para a confissão</h1>
+ <p class="note">Este é um guia para a sua reflexão pessoal. O app não pede, não registra e não envia nenhuma informação sobre os seus pecados. A confissão sacramental acontece somente com um sacerdote.</p>
+ <details class="acc" open><summary>O que é o sacramento</summary><div class="in-acc">Na Confissão, Jesus, por meio do sacerdote, perdoa os pecados cometidos depois do Batismo e nos reconcilia com Deus e com a Igreja (CIC §1422–1424). É um encontro com a misericórdia de Deus.</div></details>
+ <details class="acc"><summary>Exame de consciência</summary><div class="in-acc"><p style="margin-top:0">Reze pedindo luz ao Espírito Santo e reflita com calma, em silêncio:</p><ol>${M.map((m,i)=>`<li><b style="color:var(--ink)">${m}</b><br>${Q[i].join(' ')}</li>`).join('')}</ol></div></details>
+ <details class="acc"><summary>Os Dez Mandamentos</summary><div class="in-acc"><ol>${M.map(m=>`<li>${m}</li>`).join('')}</ol></div></details>
+ <details class="acc"><summary>Como se confessar</summary><div class="in-acc"><ol><li>Faça o sinal da cruz e diga há quanto tempo foi sua última confissão.</li><li>Conte seus pecados ao sacerdote com sinceridade e simplicidade.</li><li>Ouça os conselhos e a penitência.</li><li>Reze o ato de contrição.</li><li>Receba a absolvição e, depois, cumpra a penitência.</li></ol></div></details>
+ <details class="acc"><summary>Ato de contrição</summary><div class="in-acc"><p class="prayer-text" style="font-size:20px;color:var(--ink)">${ORACOES.find(o=>o.id==='contricao').tx}</p></div></details></div>`}
+
+/* ---------- DESAFIOS ---------- */
+function vDesafios(){return `<div class="wrap page"><div class="ph-h"><span class="kick">Desafios de fé</span><h1>Jornadas espirituais</h1><p>Uma atividade por dia, com acompanhamento do seu progresso.</p></div><div class="grid">${DESAFIOS.map(d=>card({t:d.t,d:S.chal[d.id]?`${S.chal[d.id].length} de ${d.n} dias`:`${d.n} dias`,img:d.img,prog:S.chal[d.id]?S.chal[d.id].length/d.n*100:null,tag:'Premium',on:`go('#/desafio/${d.id}')`})).join('')}</div></div>`}
+function vDesafio(id){const d=DESAFIOS.find(x=>x.id===id);const c=S.chal[id];const act=i=>({d7:'Escreva 3 motivos de gratidão a Deus',d9:'Reze 10 minutos em silêncio',d21:'Reze uma dezena do terço e a Salve Rainha',d30:`Leia ${['Mateus','Marcos','Lucas','João'][Math.floor(i/8)%4]}, capítulo ${i%8+1}`,d40:'Faça um pequeno sacrifício e ofereça a Deus'}[id]);
+ return `<div class="narrow page">${backL('#/desafios','Desafios')}<div class="cover" style="background-image:url(${IMG(d.img)})"></div><span class="kick">Desafio · ${d.n} dias</span><h1 class="serif" style="font-size:42px;margin:6px 0 10px">${d.t}</h1>
+ ${c?`<div class="pbar"><b style="width:${c.length/d.n*100}%"></b></div><p class="mut" style="font-size:14px">${c.length} de ${d.n} dias concluídos</p><div class="list" style="margin-top:12px">${[...Array(d.n)].map((_,i)=>`<button class="li" onclick="chDay('${id}',${i})"><span class="avatar" style="width:34px;height:34px;font-size:13px;${c.includes(i)?'background:#D4AF37;color:#1A1405':'background:var(--card2);color:var(--mut);border-color:var(--line)'}">${c.includes(i)?'✓':i+1}</span><div><b style="font-size:15px">Dia ${i+1}</b><small>${act(i)}</small></div></button>`).join('')}</div>`
+ :`<p class="mut">Comece hoje e acompanhe seu progresso dia a dia.</p><button class="btn b-gold" onclick="premium(()=>{S.chal['${id}']=[];save();log('Começou: ${d.t}');render()},'Os desafios de fé')">Começar o desafio</button>`}</div>`}
+function chDay(id,i){const c=S.chal[id];const k=c.indexOf(i);k<0?c.push(i):c.splice(k,1);save();render()}
+
+/* ---------- CALENDÁRIO ---------- */
+let CALM={y:today.getFullYear(),m:today.getMonth()};
+function vCalendario(){const {y,m}=CALM;const f=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate();const mn=new Date(y,m,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ const ev=Object.entries(FEASTS).filter(([d])=>d.startsWith(`${y}-${String(m+1).padStart(2,'0')}`));
+ return `<div class="wrap page"><div class="ph-h"><span class="kick">Calendário católico</span><h1>Calendário litúrgico</h1><p>Solenidades, festas, memórias e as suas novenas.</p></div>
+ <div class="split"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><button class="icon-btn" onclick="CALM.m--;if(CALM.m<0){CALM.m=11;CALM.y--}render()" aria-label="Mês anterior">${ICO.l}</button><h2 class="serif" style="font-size:28px;text-transform:capitalize">${mn}</h2><button class="icon-btn" onclick="CALM.m++;if(CALM.m>11){CALM.m=0;CALM.y++}render()" aria-label="Próximo mês">${ICO.r}</button></div>
+ <div class="month">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="dow">${d}</div>`).join('')}${[...Array(f)].map(()=>'<div class="day empty"></div>').join('')}${[...Array(n)].map((_,i)=>{const k=`${y}-${String(m+1).padStart(2,'0')}-${String(i+1).padStart(2,'0')}`;const e=FEASTS[k];return `<button class="day ${k===ymd(today)?'today':''}" onclick="${e?`toast('${e[0].replace(/'/g,'')}')`:''}">${i+1}${e?`<span class="dt" style="background:${FCOL[e[1]]}"></span>`:''}</button>`}).join('')}</div>
+ <div class="chips" style="margin-top:12px;font-size:12px">${[['s','Solenidade'],['f','Festa'],['m','Memória'],['d','Devoção']].map(([k,t])=>`<span class="mut" style="display:flex;align-items:center;gap:6px;font-size:13px"><i style="width:9px;height:9px;border-radius:50%;background:${FCOL[k]}"></i>${t}</span>`).join('')}</div></div>
+ <aside><h3 class="serif" style="font-size:24px;margin-bottom:10px">Neste mês</h3><div class="list">${ev.map(([d,[t,k]])=>`<div class="li"><div style="width:44px;text-align:center"><b class="serif" style="font-size:26px;color:${FCOL[k]}">${+d.slice(8)}</b></div><div style="flex:1"><b style="font-size:15px">${t}</b><small>${{s:'Solenidade',f:'Festa',m:'Memória',d:'Devoção popular'}[k]}</small></div><button class="toggle ${S.rem[d]?'on':''}" onclick="S.rem['${d}']=!S.rem['${d}'];save();this.classList.toggle('on');toast(S.rem['${d}']?'Lembrete criado':'Lembrete removido')" aria-label="Lembrete"></button></div>`).join('')||'<p class="mut">Sem datas cadastradas neste mês no protótipo.</p>'}</div></aside></div></div>`}
+
+/* ---------- MÚSICAS ---------- */
+function vMusicas(){const G=[['Orações narradas','Ouça as orações tradicionais',ORACOES.filter(o=>o.trad).slice(0,6)],['Cantos marianos','',null],['Músicas para adoração','',null],['Meditações guiadas','',null]];
+ return `<div class="wrap page"><div class="ph-h"><span class="kick">Músicas e meditações</span><h1>Para rezar ouvindo</h1><p>Cantos, meditações e orações narradas.</p></div>
+ ${G.map(([t,s,L])=>`<h2 class="section">${t}</h2>${L?`<div class="list">${L.map(o=>`<button class="li" onclick="${S.plan==='free'&&0?'':`speak(ORACOES.find(x=>x.id==='${o.id}').tx);toast('Tocando: ${o.t}')`}"><span class="avatar" style="width:44px;height:44px;background:var(--gold);color:#1A1405;border:0">▶</span><div><b>${o.t}</b><small>Oração narrada</small></div></button>`).join('')}</div>`:`<div class="panel-c mut" style="font-size:14.5px">Na versão final, com mídias próprias ou licenciadas, ou integração oficial com plataformas de música. <span class="tag t-gold" style="margin-left:6px">${ICO.lock} Premium</span></div>`}`).join('')}
+ <button class="btn b-ghost b-sm" style="margin-top:16px" onclick="speechSynthesis.cancel()">Parar áudio</button></div>`}
+
+/* ---------- PLANOS ---------- */
+function vPlanos(){const pl=[['free','Gratuito','R$ 0','para sempre',['Orações básicas','Terço digital','Santo do dia','Liturgia diária','Amigo da Fé IA: 5 perguntas por dia']],['premium','Premium','R$ 14,90','por mês',['Tudo do Gratuito','Novenas com acompanhamento e lembretes','Diário espiritual','Planos de leitura e desafios de fé','Áudios e meditações','IA com limites ampliados']],['familia','Família','R$ 24,90','por mês',['Tudo do Premium','Até 5 perfis individuais','Calendário familiar de oração','Jornadas compartilhadas (com consentimento)']]];
+ return `<div class="wrap page"><div class="ph-h" style="text-align:center;margin-left:auto;margin-right:auto;max-width:640px"><span class="kick">Planos</span><h1>Escolha o seu plano</h1><p style="margin:0 auto">Os recursos essenciais de oração continuam sempre gratuitos.</p></div>
+ <div class="plans">${pl.map(([id,n,p,per,f])=>`<div class="plan ${id==='premium'?'best':''}">${id==='premium'?'<span class="tag t-wine" style="position:absolute;top:-12px;left:24px">Mais escolhido</span>':''}<span class="kick">${n}</span><div class="price">${p} <small>${per}</small></div><ul>${f.map(x=>`<li>${x}</li>`).join('')}</ul>
+ <button class="btn ${S.plan===id?'b-ghost':'b-gold'} b-block" style="margin-top:auto" ${S.plan===id?'disabled':''} onclick="checkout('${id}','${n}','${p}')">${S.plan===id?'Seu plano atual':id==='free'?'Usar o gratuito':'Assinar '+n}</button></div>`).join('')}</div>
+ <p class="mut" style="text-align:center;font-size:13px;margin-top:16px">Preços de exemplo, configuráveis no painel. Pagamento recorrente via Mercado Pago ou Stripe. Cancele quando quiser.</p></div>`}
+function checkout(id,n,p){if(id==='free'){S.plan='free';save();render();return toast('Você está no plano Gratuito')}openM(`<span class="kick">Pagamento seguro</span><h2>Assinar ${n}</h2><p class="mut">${p} por mês. Na versão final, esta etapa abre o checkout do Mercado Pago (Pix, cartão ou boleto) ou do Stripe.</p><button class="btn b-gold b-block" onclick="S.plan='${id}';save();closeM();render();toast('Assinatura ${n} ativada (simulação)')">Simular pagamento aprovado</button>`)}
+
+/* ---------- PERFIL ---------- */
+function vPerfil(){const favs=S.fav.map(id=>id.startsWith('s_')?SAINTS.find(s=>'s_'+s.id===id):ORACOES.find(o=>o.id===id)).filter(Boolean);
+ return `<div class="narrow page"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px"><button class="avatar" style="width:84px;height:84px;font-size:32px;${S.user.photo?`background-image:url(${S.user.photo});color:transparent`:''}" onclick="$('#photoIn').click()" aria-label="Trocar foto">${S.user.photo?'':esc(S.user.name[0].toUpperCase())}</button>
+ <div><h1 class="serif" style="font-size:34px;line-height:1.1">${esc(S.user.name)}</h1><div class="mut" style="font-size:14px">${esc(S.user.email)}</div><span class="tag ${S.plan==='free'?'t-gold':'t-wine'}" style="margin-top:6px">${{free:'Plano Gratuito',premium:'Premium',familia:'Família'}[S.plan]}</span></div></div>
+ <button class="link" onclick="$('#photoIn').click()">Trocar foto de perfil</button>
+ <h2 class="section">Minhas devoções</h2><div class="chips">${S.devs.length?S.devs.map(id=>`<span class="chip on">${DEVS.find(d=>d.id===id).n}</span>`).join(''):'<span class="mut">Nenhuma escolhida</span>'}<button class="chip" onclick="S.onb=false;save();boot()">Editar</button></div>
+ <h2 class="section">Favoritos</h2><div class="list">${favs.length?favs.map(f=>`<button class="li" onclick="go('${f.tx?'#/oracao/'+f.id:'#/santo/'+f.id}')">${ICO.heart(1)}<div><b>${f.t||f.n}</b><small>${f.tx?'Oração':'Santo'}</small></div><span class="end">${ICO.r}</span></button>`).join(''):'<p class="mut">Você ainda não favoritou nada.</p>'}</div>
+ <h2 class="section">Histórico de atividades</h2><div class="list">${S.hist.slice(0,8).map(h=>`<div class="li" style="min-height:52px"><div><b style="font-size:15px;font-weight:600">${esc(h.t)}</b><small>${new Date(h.d).toLocaleString('pt-BR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small></div></div>`).join('')||'<p class="mut">Suas orações e terços aparecem aqui.</p>'}</div>
+ <h2 class="section">Notificações</h2><div class="panel-c">${[['diaria','Lembrete de oração diária'],['novena','Lembretes das novenas'],['santo','Santo do dia'],['liturgia','Liturgia do dia']].map(([k,t])=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span>${t}</span><button class="toggle ${S.notif[k]?'on':''}" onclick="S.notif['${k}']=!S.notif['${k}'];save();this.classList.toggle('on')"></button></div>`).join('')}</div>
+ <h2 class="section">Aparência</h2><div class="panel-c" style="display:flex;justify-content:space-between;align-items:center"><span>Modo escuro</span><button class="toggle ${S.theme==='dark'?'on':''}" onclick="toggleTheme();this.classList.toggle('on')"></button></div>
+ <h2 class="section">Plano</h2><button class="btn b-gold" onclick="go('#/planos')">Ver planos</button>
+ <p class="note" style="margin-top:26px">Privacidade (LGPD): suas devoções, intenções e diário são dados sensíveis e ficam protegidos. Você pode exportar ou apagar seus dados quando quiser.</p>
+ <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn b-ghost b-sm" onclick="if(confirm('Apagar todos os seus dados deste aparelho?')){localStorage.removeItem('fc_state');location.reload()}">Apagar meus dados</button><button class="btn b-ghost b-sm" onclick="logout()">Sair da conta</button></div></div>`}
+$('#photoIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=c.height=200;const s=Math.min(img.width,img.height);c.getContext('2d').drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,200,200);S.user.photo=c.toDataURL('image/jpeg',.8);save();setAv();render();toast('Foto atualizada')};img.src=r.result};r.readAsDataURL(f)};
+
+/* =========================================================
+   ROTEADOR
+   ========================================================= */
+function render(){
+ const p=location.hash.replace(/^#\/?/,'').split('/').map(decodeURIComponent);let r=p[0]||'home',h;
+ if(r!=='terco')speechSynthesis?.cancel();
+ switch(r){
+  case 'home':h=vHome();break;
+  case 'explorar':h=vExplorar();break;
+  case 'terco':h=p[1]?vTerco(p[1]):vTercoList();break;
+  case 'oracoes':h=vOracoes(p[1]);break;
+  case 'oracao':h=vOracao(p[1]);r='oracoes';break;
+  case 'novenas':h=vNovenas();break;
+  case 'novena':h=vNovena(p[1]);r='novenas';break;
+  case 'santo':h=vSanto(p[1]);break;
+  case 'santos':h=vSantos();r='santo';break;
+  case 'liturgia':h=vLiturgia();break;
+  case 'ia':h=vIA();break;
+  case 'biblia':h=vBiblia(p[1],p[2]?+p[2]:0);r='explorar';break;
+  case 'diario':h=vDiario();r='explorar';break;
+  case 'intencoes':h=vIntencoes();r='explorar';break;
+  case 'confissao':h=vConfissao();r='explorar';break;
+  case 'desafios':h=vDesafios();r='explorar';break;
+  case 'desafio':h=vDesafio(p[1]);r='explorar';break;
+  case 'calendario':h=vCalendario();r='liturgia';break;
+  case 'musicas':h=vMusicas();r='explorar';break;
+  case 'planos':h=vPlanos();r='explorar';break;
+  case 'perfil':h=vPerfil();r='perfil';break;
+  default:h=vHome();r='home';
+ }
+ $('#view').innerHTML=h;
+ document.querySelectorAll('[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===r));
+ if(p[0]==='terco'&&p[1]&&TL[p[1]])tcBind();
+ if(p[0]!=='ia')scrollTo(0,0);else scrollTo(0,CHAT.length?document.body.scrollHeight:0);
+}
+addEventListener('hashchange',()=>{if(S.user&&S.onb)render()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();if(location.hash.startsWith('#/terco/')&&TS&&!e.target.closest('input,textarea')){if(e.key==='ArrowRight')tcGo(1);if(e.key==='ArrowLeft')tcGo(-1)}});
+boot();
+</script>
+</body>
+</html>
